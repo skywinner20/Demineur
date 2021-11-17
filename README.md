@@ -1,2 +1,2 @@
 # Demineur
-Le meilleur démineur en python
+Le meilleur démineur en python.
