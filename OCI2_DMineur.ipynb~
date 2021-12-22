@@ -23,8 +23,6 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
-   "outputs": [],
    "source": [
     "import random\n",
     "import math"
@@ -33,8 +31,6 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
-   "outputs": [],
    "source": [
     "def magrille(l,c):\n",
     "    grille = []\n",
@@ -46,8 +42,6 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
-   "outputs": [],
    "source": [
     "mg = magrille(5,5)"
    ]
@@ -71,8 +65,6 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
-   "outputs": [],
    "source": [
     "def printGrille(magrille):\n",
     "    nbligne = len(magrille)\n",
@@ -96,7 +88,7 @@
    "source": [
     "printGrille(mg)"
    ]
-  },
+	},
   {
    "cell_type": "markdown",
    "metadata": {},
@@ -372,37 +364,41 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "source": [
+    "discworld = turtle.Screen() #ecran\n",
+    "ATuin = turtle.Turtle()\n",
+    "ATuin.shape(\"turtle\")#forme de tortue",
+    "l_user, c_user, action = input(\"Que voulez-vous faire? (ligne colonne action)\").split(\" \")",
+   ],
+   "outputs": [],
+   "metadata": {}
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "source": [
+    "discworld.reset()#remet l'écran à 0\n",
+    "ATuin.speed(0)# Vitesse de la tortue\n",
+    "ATuin.fillcolor(\"gray\") #couleur de remplissage en gris\n",
+    "for i in range(len(mg)): #parcourt les colonnes\n",
+    "        for k in range(len(mg[i])): #parcourt les lignes\n",
+    "            ATuin.up() #évite de dessinner les déplacements\n",
+    "            ATuin.goto(50*i,-50*k) #fait aller la tortue à la position de la case\n",
+    "            ATuin.down() #commence à dessiner\n",
+    "            ATuin.begin_fill() #commence le remplissage des cases\n",
+    "            for x in range(4): # boucle qui dessine un carré\n",
+    "                ATuin.forward(40)\n",
+    "                ATuin.right(90)\n",
+    "            ATuin.end_fill() #termine le remplissage des cases"
+   ],
    "outputs": [],
    "source": [
     "l_user"
    ]
   },
   {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "### Cette fichue tortue\n",
-    "\n",
-    "Bonne chance Cédric"
-   ]
-  },
-  {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "discworld = turtle.Screen() #ecran\n",
-    "ATuin = turtle.Turtle()\n",
-    "ATuin.shape(\"turtle\")#forme de tortue"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
    "source": [
     "def pointinterrogationtortue(x,y):\n",
     "    \"\"\"\n",
@@ -423,31 +419,31 @@
     "    ATuin.goto(50*x+10,-50*y-43)\n",
     "    ATuin.down()\n",
     "    ATuin.write(\"?\", font=(\"Arial\", 40, \"normal\"))"
-   ]
+   ],
+   "outputs": [],
+   "metadata": {}
   },
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
-   "outputs": [],
    "source": [
     "pointinterrogationtortue(3,2)"
-   ]
+   ],
+   "outputs": [],
+   "metadata": {}
   },
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
-   "outputs": [],
    "source": [
     "ATuin.reset()"
-   ]
+   ],
+   "outputs": [],
+   "metadata": {}
   },
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
-   "outputs": [],
    "source": [
     "def drapeautortue(x,y):\n",
     "    \"\"\"\n",
@@ -477,12 +473,16 @@
     "    ATuin.left(120)\n",
     "    ATuin.forward(15)\n",
     "    ATuin.end_fill()"
-   ]
+   ],
+   "outputs": [],
+   "metadata": {}
   },
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "source": [
+    "drapeautortue(2,3)"
+   ],
    "outputs": [],
    "source": [
     "import turtle"
