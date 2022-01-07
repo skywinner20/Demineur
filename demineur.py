@@ -116,14 +116,14 @@ def grille_cachee(liste_b): #Le but de cette matrice est d'être remplacé par l
     """
     grille = []
     for i in range(len(liste_b)): 
-        grille.append("□"*len(liste_b[0]))
+        grille.append(list("□"*len(liste_b[0]))) #IL FALLAIT JUSTE TRANSFORMER LITERABLE EN LISTE JE VAIS DEVENIR FOU
     return grille
 
 def user_inter(liste_grille): # Interaction user
     """
     Prends la liste de la grille, demande les variables lignes colonnes action au user pour savoir ce qu'il veut faire et retourne l_user, c_user et action tq. l_user = ligne choisie, c_user = colonne choisie et action = action choisie
     
-    action possible: marcher, drapeau, ?
+    action possible: m, F, ?
     """
     flag_nbr = False #Flag pour les nombres
     flag_action = False #Flag pour l'action
@@ -131,7 +131,7 @@ def user_inter(liste_grille): # Interaction user
 
     while flag_nbr == False or flag_action == False: #Testeurs pour savoir si les variables sont légales ou pas
         try:    
-            l_user, c_user, action = input("Que voulez-vous faire? (ligne colonne action)").split(" ")
+            l_user, c_user, action = input("Que voulez-vous faire? (ligne colonne action, action possibles: m(Marcher), F(Drapeau), ?): ").split(" ")
         except ValueError:
             print("Erreur: Nombre de paramètres faux") 
 
@@ -152,11 +152,13 @@ def user_inter(liste_grille): # Interaction user
                 print("Erreur: Nombres impossibles, ils ne sont pas dans la grille")
         
         try: #Verif action légal
-            if action == "marcher":
+            if action == "m":
                 flag_action = True
-            elif action == "drapeau":
+            elif action == "F":
                 flag_action = True
             elif action == "?":
+                flag_action = True
+            elif action == "DEBUG":
                 flag_action = True
             else:
                 print("Erreur: Action incorrecte")
@@ -166,68 +168,69 @@ def user_inter(liste_grille): # Interaction user
     
     return l_user, c_user, action
 
-def GameOver(): #TODO : le gameover
-    """
-    T'as perdu. Gros nullos.
-    """
-    print("olala la defaite du joueur francais")
-
-def gameplay(l_user, c_user, action, grille, grillescore): #Là ou va se jouer le GAMING (interaction userinput et grille)
+def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se jouer le GAMING (interaction userinput et grille)
     """
     Prends les valeurs l_user, c_user, action, grille que modifie le joueur, la grille scorée, et retourne la grille modifiée en circonstance, n si une bombe est touchée et
-    FBomb si un drapeau a été placé sur une bombe
+    FBomb si un F a été placé sur une bombe
     """
     n = False
     FBomb = False
+    l_user = int(l_user)
+    c_user = int(c_user)
+    grille = grilleJoueur.copy()
+    FlagDebug = False
 
-    if action == "marcher":
+    if action == "m":
 
         if grille[l_user][c_user] != "□" or grille[l_user][c_user] == "F" or grille[l_user][c_user] == "?": #Case innouvrable
-            n = False
+            n = True
 
         elif grillescore[l_user][c_user] == "B": # Bombe
-            GameOver()
+            n = True
 
         elif grillescore[l_user][c_user] == 0: # Zéro
 
-            grille[l_user][c_user] = grillescore[l_user][c_user] #Remplacer la case
+            grille[l_user][c_user] = int(grillescore[l_user][c_user]) #Remplacer la case
             #Maintenant, il faut montrer les 8 voisins
 
             if l_user - 1 >= 0 and c_user - 1 >= 0: #En haut à gauche
-                grille[l_user - 1][c_user - 1] = grillescore[l_user - 1][c_user - 1]
+                grille[l_user - 1][c_user - 1] = int(grillescore[l_user - 1][c_user - 1])
 
             if l_user - 1 >= 0: #En haut au milieu
-                grille[l_user - 1][c_user] = grillescore[l_user - 1][c_user]
+                grille[l_user - 1][c_user] = int(grillescore[l_user - 1][c_user])
 
             if l_user - 1 >= 0 and c_user + 1 <= len(grille[0]): #En haut à droite
-                grille[l_user - 1][c_user + 1] = grillescore[l_user - 1][c_user]
+                grille[l_user - 1][c_user + 1] = int(grillescore[l_user - 1][c_user])
 
             if c_user - 1 >= 0: #Au milieu à gauche
-                grille[l_user][c_user - 1] = grillescore[l_user][c_user - 1]
+                grille[l_user][c_user - 1] = int(grillescore[l_user][c_user - 1])
             
             if c_user + 1 <= len(grille[0]): #Au milieu à droite
-                grille[l_user][c_user + 1] = grillescore[l_user][c_user + 1]
+                grille[l_user][c_user + 1] = int(grillescore[l_user][c_user + 1])
             
             if l_user + 1 <= len(grille) and c_user - 1 <= len(grille[0]): #En bas à gauche
-                grille[l_user + 1][c_user - 1] = grillescore[l_user + 1][c_user - 1]
+                grille[l_user + 1][c_user - 1] = int(grillescore[l_user + 1][c_user - 1])
             
             if l_user + 1 <= len(grille): #En bas au milieu
-                grille[l_user + 1][c_user] = grillescore[l_user + 1][c_user]
+                grille[l_user + 1][c_user] = int(grillescore[l_user + 1][c_user])
             
             if l_user + 1 <= len(grille) and c_user + 1 <= len(grille[0]): #En bas à droite
-                grille[l_user + 1][c_user + 1] = grillescore[l_user + 1][c_user + 1]
+                grille[l_user + 1][c_user + 1] = int(grillescore[l_user + 1][c_user + 1])
         
         else: #le reste 
-            grille[l_user][c_user] = grillescore[l_user][c_user]
+            grille[l_user][c_user] = int(grillescore[l_user][c_user])
     
-    elif action == "drapeau":
+    elif action == "F":
         if grillescore[l_user][c_user] == "B":
             FBomb = True
         grille[l_user][c_user] = "F"
     
     elif action == "?":
         grille[l_user][c_user] = "?"
-    
+
+    elif action == "DEBUG":
+        FlagDebug = True
+
     return grille, n, FBomb
 
 def DebutGame():
@@ -243,7 +246,7 @@ def DebutGame():
 
     while flag_a == False or flag_b == False or flag_c == False:
         try: #Lignes
-            a = input("Combien de lignes voulez-vous ? (Facile: 10, Moyen: 20, Difficile: 50")
+            a = input("Combien de lignes voulez-vous ? (Facile: 10, Moyen: 20, Difficile: 50): ")
 
             if int(a) >= 5 and int(a) <= 70:
                 a = int(a)
@@ -255,7 +258,7 @@ def DebutGame():
             print("Erreur: Nombres de lignes incorrectes")
         
         try: #Colonnes
-            b = input("Combien de colonnes voulez-vous ? (Facile: 10, Moyen: 20, Difficile: 50)")
+            b = input("Combien de colonnes voulez-vous ? (Facile: 10, Moyen: 20, Difficile: 50): ")
 
             if int(b) >= 5 and int(b) <= 70:
                 b = int(b)
@@ -267,9 +270,9 @@ def DebutGame():
             print("Erreur: Nombres de colonnes incorrectes")
         
         try:
-            c = input("Combien de bombes voulez-vous ? (Facile: 20, Moyen: 40, Difficile: 100")
+            c = input("Combien de bombes voulez-vous ? (Facile: 20, Moyen: 40, Difficile: 100): ")
 
-            if int(c) >= (a*b)/2 and int(c) >= 5:
+            if int(c) <= (int(a)*int(b))/2 and int(c) >= 5:
                 c = int(c)
                 flag_c = True
             else:
@@ -285,6 +288,7 @@ def DebutGame():
 # - Début de l'EXPERIENCE
 
 nLignes, nColonnes, nBomb = DebutGame()
+nLignes, nColonnes, nBomb = int(nLignes), int(nColonnes), int(nBomb)
 GrilleNbr = GrilleScore(putBomb(magrille(nLignes, nColonnes), nBomb)) #Génération de la grille avc toutes les infos
 
 GrilleJoueur = grille_cachee(GrilleNbr)
@@ -296,7 +300,9 @@ printGrille(GrilleJoueur)
 
 while flag_compteur_juste < nBomb or TouchBomb == True: # Le JEU
     l_user, c_user, action_user = user_inter(GrilleNbr)
-    grilleJoueur, TouchBomb, FlagBomb = gameplay(l_user, c_user, action_user, GrilleJoueur, GrilleNbr)
+    grilleJoueur, TouchBomb, FlagBomb, FlagDebug = gameplay(l_user, c_user, action_user, GrilleJoueur, GrilleNbr)
+    if FlagDebug == True:
+        printGrille(GrilleNbr)
     if FlagBomb == True:
         flag_compteur_juste += 1
     printGrille(GrilleJoueur)
