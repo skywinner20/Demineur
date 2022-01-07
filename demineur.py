@@ -6,6 +6,8 @@ import random #Grande liste des imports
 import math
 import turtle
 
+# - - - - - DÉBUT DES FONCTIONS - - - - - -
+
 def magrille(l,c):
     """
     Prends nbr de lignes et de colonnes et retourne une matrice (liste de liste) de la grille
@@ -172,12 +174,11 @@ def GameOver(): #TODO : le gameover
 
 def gameplay(l_user, c_user, action, grille, grillescore): #Là ou va se jouer le GAMING (interaction userinput et grille)
     """
-    Prends les valeurs l_user, c_user, action, grille que modifie le joueur, la grille scorée, et retourne la grille modifiée en circonstance et n
-
-    n = False si problème avec case (déjà ouverte ou protégée)
-    n = True si drapeau sur bombe
+    Prends les valeurs l_user, c_user, action, grille que modifie le joueur, la grille scorée, et retourne la grille modifiée en circonstance, n si une bombe est touchée et
+    FBomb si un drapeau a été placé sur une bombe
     """
     n = False
+    FBomb = False
 
     if action == "marcher":
 
@@ -221,8 +222,90 @@ def gameplay(l_user, c_user, action, grille, grillescore): #Là ou va se jouer l
     
     elif action == "drapeau":
         if grillescore[l_user][c_user] == "B":
-            n = True
+            FBomb = True
         grille[l_user][c_user] = "F"
     
     elif action == "?":
         grille[l_user][c_user] = "?"
+    
+    return grille, n, FBomb
+
+def DebutGame():
+    """
+    Fait débuter la partie. Demande au user le nbr de lignes, colonnes et bombes, et retourne les valeurs lignes, colonnes et bombes
+    """
+    print("     ,--.!,\n  __/   -*-\n,d08b.  '|`\n0088MM\n`9MMP'   Démineur - Ardi et Cédric")
+    print("Bienvenue dans le futur du Gaming et du divertissement, vous allez adorer ! Je ne vais pas vous faire l'affront de vous expliquer comment jouer.")
+
+    flag_a = False
+    flag_b = False
+    flag_c = False
+
+    while flag_a == False or flag_b == False or flag_c == False:
+        try: #Lignes
+            a = input("Combien de lignes voulez-vous ? (Facile: 10, Moyen: 20, Difficile: 50")
+
+            if int(a) >= 5 and int(a) <= 70:
+                a = int(a)
+                flag_a = True
+            else:
+                print("Erreur: Nombres de lignes incorrectes")
+
+        except ValueError:
+            print("Erreur: Nombres de lignes incorrectes")
+        
+        try: #Colonnes
+            b = input("Combien de colonnes voulez-vous ? (Facile: 10, Moyen: 20, Difficile: 50)")
+
+            if int(b) >= 5 and int(b) <= 70:
+                b = int(b)
+                flag_b = True
+            else:
+                print("Erreur: Nombres de colonnes incorrectes")
+
+        except ValueError:
+            print("Erreur: Nombres de colonnes incorrectes")
+        
+        try:
+            c = input("Combien de bombes voulez-vous ? (Facile: 20, Moyen: 40, Difficile: 100")
+
+            if int(c) >= (a*b)/2 and int(c) >= 5:
+                c = int(c)
+                flag_c = True
+            else:
+                print("Erreur: Nombre de bombes incorrectes")
+        
+        except ValueError:
+            print("Erreur: Nombre de bombes incorrectes")
+        
+    return a, b, c
+
+# - - - - - FIN DES FONCTIONS, MAINTENANT CA DEVIENT RÉEL - - - - - -
+
+# - Début de l'EXPERIENCE
+
+nLignes, nColonnes, nBomb = DebutGame()
+GrilleNbr = GrilleScore(putBomb(magrille(nLignes, nColonnes), nBomb)) #Génération de la grille avc toutes les infos
+
+GrilleJoueur = grille_cachee(GrilleNbr)
+
+flag_compteur_juste = 0
+TouchBomb = False
+
+printGrille(GrilleJoueur)
+
+while flag_compteur_juste < nBomb or TouchBomb == True: # Le JEU
+    l_user, c_user, action_user = user_inter(GrilleNbr)
+    grilleJoueur, TouchBomb, FlagBomb = gameplay(l_user, c_user, action_user, GrilleJoueur, GrilleNbr)
+    if FlagBomb == True:
+        flag_compteur_juste += 1
+    printGrille(GrilleJoueur)
+
+if TouchBomb == True:
+    printGrille(GrilleNbr)
+    print("     ,--.!,\n  __/   -*-\n,d08b.  '|`\n0088MM\n`9MMP'   Game Over. C'était une bombe.")
+
+elif flag_compteur_juste == nBomb:
+    printGrille(GrilleNbr)
+    print("___________/|\n (__|||__) \| Bravo ! Vous avez gagné !")
+
