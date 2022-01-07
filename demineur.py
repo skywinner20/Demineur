@@ -170,15 +170,16 @@ def user_inter(liste_grille): # Interaction user
 
 def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se jouer le GAMING (interaction userinput et grille)
     """
-    Prends les valeurs l_user, c_user, action, grille que modifie le joueur, la grille scorée, et retourne la grille modifiée en circonstance, n si une bombe est touchée et
-    FBomb si un F a été placé sur une bombe
+    Prends les valeurs l_user, c_user, action, grille que modifie le joueur, la grille scorée, et retourne la grille modifiée en circonstance, DeathBomb si une bombe est touchée,
+    FBomb si un F a été placé sur une bombe, n si une case intouchable est touchée
     """
-    n = False
+    DeathBomb = False
     FBomb = False
     l_user = int(l_user)
     c_user = int(c_user)
     grille = grilleJoueur.copy()
     FlagDebug = False
+    n = False
 
     if action == "m":
 
@@ -186,7 +187,7 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
             n = True
 
         elif grillescore[l_user][c_user] == "B": # Bombe
-            n = True
+            DeathBomb = True
 
         elif grillescore[l_user][c_user] == 0: # Zéro
 
@@ -220,10 +221,17 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
         else: #le reste 
             grille[l_user][c_user] = int(grillescore[l_user][c_user])
     
-    elif action == "F":
-        if grillescore[l_user][c_user] == "B":
+    elif action == "F": #Drapeau
+
+        if grillescore[l_user][c_user] == "B": #Si drapeau sur bombe
             FBomb = True
-        grille[l_user][c_user] = "F"
+            grille[l_user][c_user] = "F"
+
+        if grille[l_user][c_user] == "F": #Pour enlever le drapeau
+            if grillescore[l_user][c_user] == "B": #Enlever le drapeau = décès. Ce jeu a pour but de ressembler à un simulateur réaliste de guerre.
+                DeathBomb = True
+            grille[l_user][c_user] == grillescore[l_user][c_user]
+
     
     elif action == "?":
         grille[l_user][c_user] = "?"
@@ -231,7 +239,7 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
     elif action == "DEBUG":
         FlagDebug = True
 
-    return grille, n, FBomb
+    return grille, DeathBomb, FBomb, FlagDebug, n
 
 def DebutGame():
     """
@@ -298,13 +306,15 @@ TouchBomb = False
 
 printGrille(GrilleJoueur)
 
-while flag_compteur_juste < nBomb or TouchBomb == True: # Le JEU
+while flag_compteur_juste < nBomb or TouchBomb == False: # Le JEU
     l_user, c_user, action_user = user_inter(GrilleNbr)
-    grilleJoueur, TouchBomb, FlagBomb, FlagDebug = gameplay(l_user, c_user, action_user, GrilleJoueur, GrilleNbr)
+    grilleJoueur, TouchBomb, FlagBomb, FlagDebug, FlagNon = gameplay(l_user, c_user, action_user, GrilleJoueur, GrilleNbr)
     if FlagDebug == True:
         printGrille(GrilleNbr)
     if FlagBomb == True:
         flag_compteur_juste += 1
+    if FlagNon == True:
+        print("Case intouchable !")
     printGrille(GrilleJoueur)
 
 if TouchBomb == True:
