@@ -316,12 +316,9 @@ while flag_compteur_juste < nBomb or TouchBomb == False: # Le JEU
     if FlagNon == True:
         print("Case intouchable !")
     printGrille(GrilleJoueur)
-
-if TouchBomb == True:
-    printGrille(GrilleNbr)
-    print("     ,--.!,\n  __/   -*-\n,d08b.  '|`\n0088MM\n`9MMP'   Game Over. C'était une bombe.")
-
-elif flag_compteur_juste == nBomb:
-    printGrille(GrilleNbr)
-    print("___________/|\n (__|||__) \| Bravo ! Vous avez gagné !")
-
+    if TouchBomb == True:
+        printGrille(GrilleNbr)
+        print("     ,--.!,\n  __/   -*-\n,d08b.  '|`\n0088MM\n`9MMP'   Game Over. C'était une bombe.")
+    if flag_compteur_juste == nBomb:
+        printGrille(GrilleNbr)
+        print("___________/|\n (__|||__) \| Bravo ! Vous avez gagné !")
