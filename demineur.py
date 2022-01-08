@@ -230,7 +230,7 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
         if grille[l_user][c_user] == "F": #Pour enlever le drapeau
             if grillescore[l_user][c_user] == "B": #Enlever le drapeau = décès. Ce jeu a pour but de ressembler à un simulateur réaliste de guerre.
                 DeathBomb = True
-            grille[l_user][c_user] == grillescore[l_user][c_user]
+            grille[l_user][c_user] == "□"
 
     
     elif action == "?":
