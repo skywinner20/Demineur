@@ -202,7 +202,7 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
                 grille[l_user - 1][c_user] = int(grillescore[l_user - 1][c_user])
 
             if (l_user - 1) >= 0 and (c_user + 1) < len(grille[0]): #En haut à droite
-                grille[l_user - 1][c_user + 1] = int(grillescore[l_user - 1][c_user])
+                grille[l_user - 1][c_user + 1] = int(grillescore[l_user - 1][c_user + 1])
 
             if (c_user - 1) >= 0: #Au milieu à gauche
                 grille[l_user][c_user - 1] = int(grillescore[l_user][c_user - 1])
