@@ -372,56 +372,65 @@ def DebutGame():
 # - - - - - FIN DES FONCTIONS, MAINTENANT CA DEVIENT RÉEL - - - - - -
 
 # - Début de l'EXPERIENCE
+flag_jeu = False
+while flag_jeu == False:
+    nLignes, nColonnes, nBomb, flag_turtle = DebutGame()
+    nLignes, nColonnes, nBomb = int(nLignes), int(nColonnes), int(nBomb)
+    GrilleNbr = GrilleScore(putBomb(magrille(nLignes, nColonnes), nBomb)) #Génération de la grille avc toutes les infos
 
-nLignes, nColonnes, nBomb, flag_turtle = DebutGame()
-nLignes, nColonnes, nBomb = int(nLignes), int(nColonnes), int(nBomb)
-GrilleNbr = GrilleScore(putBomb(magrille(nLignes, nColonnes), nBomb)) #Génération de la grille avc toutes les infos
+    GrilleJoueur = grille_cachee(GrilleNbr)
 
-GrilleJoueur = grille_cachee(GrilleNbr)
+    flag_compteur_juste = 0
+    TouchBomb = False
 
-flag_compteur_juste = 0
-TouchBomb = False
-
-printGrille(GrilleJoueur)
-
-if flag_turtle == True:
-    import turtlelib as tr
-    tr.grilleturtle(nLignes,nColonnes)
-
-while flag_compteur_juste < nBomb and TouchBomb == False: # Le JEU
-    l_user, c_user, action_user = user_inter(GrilleNbr)
-    grilleJoueur, TouchBomb, FlagBomb, FlagDebug, FlagNon = gameplay(l_user, c_user, action_user, GrilleJoueur, GrilleNbr)
-    if FlagDebug == True:
-        printGrille(GrilleNbr)
-    if FlagBomb == True:
-        flag_compteur_juste += 1
-    if FlagNon == True:
-        print("Case intouchable !")
     printGrille(GrilleJoueur)
-    if TouchBomb == True:
-        print("     ,--.!,\n  __/   -*-\n,d08b.  '|`\n0088MM\n`9MMP'   Game Over. C'était une bombe.")
-        print("Voici la grille complète:")
-        printGrille(GrilleNbr)
-        if flag_turtle == True:
-            for i in range(len(GrilleNbr)):
-                for k in range(len(GrilleNbr[i])):
-                    if GrilleNbr[i][k] == "B":
-                        tr.bombeturtle(i,k)
-                    else:
-                        tr.nombrebombestortue(i,k,GrilleNbr[i][k])
-                    
-        
-        print("Rééssayez !")
-    if flag_compteur_juste == nBomb:
-        printGrille(GrilleNbr)
-        if flag_turtle == True:
-            for i in range(len(GrilleNbr)):
-                for k in range(len(GrilleNbr[i])):
-                    if GrilleNbr[i][k] == "B":
-                        tr.bombeturtle(i,k)
-                    else:
-                        tr.nombrebombestortue(i,k,GrilleNbr[i][k])
-                    
-        print("___________/|\n (__|||__) \| Bravo ! Vous avez gagné ! \n Merci d'avoir joué !")
 
-print("Pour rejouer, relancez le programme !")
+    if flag_turtle == True:
+        import turtlelib as tr
+        tr.grilleturtle(nLignes,nColonnes)
+
+    while flag_compteur_juste < nBomb and TouchBomb == False: # Le JEU
+        l_user, c_user, action_user = user_inter(GrilleNbr)
+        grilleJoueur, TouchBomb, FlagBomb, FlagDebug, FlagNon = gameplay(l_user, c_user, action_user, GrilleJoueur, GrilleNbr)
+        if FlagDebug == True:
+            printGrille(GrilleNbr)
+        if FlagBomb == True:
+            flag_compteur_juste += 1
+        if FlagNon == True:
+            print("Case intouchable !")
+        printGrille(GrilleJoueur)
+        if TouchBomb == True:
+            print("     ,--.!,\n  __/   -*-\n,d08b.  '|`\n0088MM\n`9MMP'   Game Over. C'était une bombe.")
+            print("Voici la grille complète:")
+            printGrille(GrilleNbr)
+            if flag_turtle == True:
+                for i in range(len(GrilleNbr)):
+                    for k in range(len(GrilleNbr[i])):
+                        if GrilleNbr[i][k] == "B":
+                            tr.bombeturtle(i,k)
+                        else:
+                            tr.nombrebombestortue(i,k,GrilleNbr[i][k])
+                        
+            
+            print("Rééssayez !")
+        if flag_compteur_juste == nBomb:
+            printGrille(GrilleNbr)
+            if flag_turtle == True:
+                for i in range(len(GrilleNbr)):
+                    for k in range(len(GrilleNbr[i])):
+                        if GrilleNbr[i][k] == "B":
+                            tr.bombeturtle(i,k)
+                        else:
+                            tr.nombrebombestortue(i,k,GrilleNbr[i][k])
+                        
+            print("___________/|\n (__|||__) \| Bravo ! Vous avez gagné ! \n Merci d'avoir joué !")
+
+    replay = False
+    while replay == False:
+        rejouer=input('Pour rejouer, apuyez sur "r", pour quitter le programme appuyez sur "q"')
+        if rejouer == "r":
+            replay = True
+        if rejouer == "q":
+            replay = True
+            flag_jeu == True
+    
