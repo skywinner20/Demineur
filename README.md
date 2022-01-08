@@ -1,8 +1,10 @@
 # Demineur
 Le meilleur démineur en python, dévelopé avec amour par Ardi Cerkini et Cédric Brunner.
 
-# Comment jouer ?
-Lancez le fichier demineur.py. Choisissez le nombres de lignes, de colonnes et de bombes que vous souhaitez.
+## Comment jouer ?
+Lancez le fichier demineur.py.
+>python ./demineur.py
+Choisissez le nombres de lignes, de colonnes et de bombes que vous souhaitez.
 Voici plusieurs difficultés possibles.
 
 >**Facile**: 10 lignes, 10 colonnes et 20 bombes.
@@ -26,4 +28,7 @@ Voici les mouvements possibles:
 
 
 Le jeu se termine lorsque toutes les mines sont marquées, ou lorsque vous marchez sur une bombe. Bonne chance !
+
+## Exigences techniques
+Vous avez besoin du package Turtle, ainsi que d'un ordinateur.
 
