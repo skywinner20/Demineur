@@ -197,7 +197,7 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
 
                 grille[l_user][c_user] = int(grillescore[l_user][c_user]) #Remplacer la case
                 if flag_turtle == True:
-                        tr.nombrebombestortue(l_user,c_user,int(grillescore[l_user][c_user]))
+                    tr.nombrebombestortue(l_user,c_user,int(grillescore[l_user][c_user]))
 
                 #Maintenant, il faut montrer les 8 voisins
 
@@ -316,7 +316,7 @@ def DebutGame():
 
     while flag_a == False or flag_b == False or flag_c == False or flag_d == False:
         try: #turtle ou pas
-            d = input("Voulez-vous jouer avec les graphisems turtle ? (oui ou non)")
+            d = input("Voulez-vous jouer avec les graphisems turtle ? (oui ou non): ")
             
             if d == "oui":
                 flag_turtle = True
@@ -324,9 +324,9 @@ def DebutGame():
             elif d == "non":
                 flag_d = True
             else:
-                print('La réponse doit être "oui" ou "non"')
+                print('La réponse doit être "oui" ou "non".')
         except ValueError:
-            print('La réponse doit être "oui" ou "non"')
+            print('La réponse doit être "oui" ou "non".')
         try: #Lignes
             a = input("Combien de lignes voulez-vous ? (Facile: 10, Moyen: 20, Difficile: 50): ")
 
@@ -407,7 +407,7 @@ while flag_compteur_juste < nBomb and TouchBomb == False: # Le JEU
                         tr.nombrebombestortue(i,k,GrilleNbr[i][k])
                     
         
-        print("rééssayez !")
+        print("Rééssayez !")
     if flag_compteur_juste == nBomb:
         printGrille(GrilleNbr)
         if flag_turtle == True:
@@ -420,4 +420,4 @@ while flag_compteur_juste < nBomb and TouchBomb == False: # Le JEU
                     
         print("___________/|\n (__|||__) \| Bravo ! Vous avez gagné ! \n Merci d'avoir joué !")
 
-print("Pour rejouer relancez le programme !")
+print("Pour rejouer, relancez le programme !")
