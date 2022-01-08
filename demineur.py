@@ -319,7 +319,7 @@ while flag_compteur_juste < nBomb or TouchBomb == False: # Le JEU
     printGrille(GrilleJoueur)
     if TouchBomb == True:
         print("     ,--.!,\n  __/   -*-\n,d08b.  '|`\n0088MM\n`9MMP'   Game Over. C'était une bombe.")
-        print("Voici la case en entier:")
+        print("Voici la grille complète:")
         printGrille(GrilleNbr)
     if flag_compteur_juste == nBomb:
         printGrille(GrilleNbr)
