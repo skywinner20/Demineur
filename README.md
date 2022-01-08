@@ -24,4 +24,4 @@ Voici les mouvements possibles:
 >**?, Interrogation**
 >Si vous n'êtes pas sûr s'il s'agit d'une bombe ou pas.
 
-Le jeu se termine lorsque toutes les mines sont balisées, ou lorsque vous marchez sur une bombe. Bonne chance !
+Le jeu se termine lorsque toutes les mines sont marquées, ou lorsque vous marchez sur une bombe. Bonne chance !
