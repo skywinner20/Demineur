@@ -3,7 +3,9 @@ Le meilleur démineur en python, dévelopé avec amour par Ardi Cerkini et Cédr
 
 ## Comment jouer ?
 Lancez le fichier demineur.py.
+
 >python ./demineur.py
+
 Choisissez le nombres de lignes, de colonnes et de bombes que vous souhaitez.
 Voici plusieurs difficultés possibles.
 
