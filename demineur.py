@@ -323,9 +323,9 @@ def DebutGame():
             elif d == "non":
                 flag_d = True
             else:
-                print('La réponse doit être "oui" ou "non"')
+                print('La réponse doit être "oui" ou "non".')
         except ValueError:
-            print('La réponse doit être "oui" ou "non"')
+            print('La réponse doit être "oui" ou "non".')
         try: #Lignes
             a = input("Combien de lignes voulez-vous ? (Facile: 10, Moyen: 20, Difficile: 50): ")
 
