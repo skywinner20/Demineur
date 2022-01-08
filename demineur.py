@@ -5,7 +5,7 @@
 import random #Grande liste des imports
 import math
 
-from turtlelib import grileturtle
+
 
 
 # - - - - - DÉBUT DES FONCTIONS - - - - - -
@@ -199,30 +199,48 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
 
             if (l_user - 1) >= 0 and (c_user - 1) >= 0: #En haut à gauche
                 grille[l_user - 1][c_user - 1] = int(grillescore[l_user - 1][c_user - 1])
+                if flag_turtle == True:
+                    tr.nombrebombestortue(l_user - 1,c_user - 1,int(grillescore[l_user - 1][c_user - 1]))
 
             if (l_user - 1) >= 0: #En haut au milieu
                 grille[l_user - 1][c_user] = int(grillescore[l_user - 1][c_user])
+                if flag_turtle == True:
+                    tr.nombrebombestortue(l_user - 1,c_user,int(grillescore[l_user - 1][c_user]))
 
             if (l_user - 1) >= 0 and (c_user + 1) < len(grille[0]): #En haut à droite
                 grille[l_user - 1][c_user + 1] = int(grillescore[l_user - 1][c_user + 1])
+                if flag_turtle == True:
+                    tr.nombrebombestortue(l_user - 1,c_user + 1,int(grillescore[l_user - 1][c_user + 1]))
 
             if (c_user - 1) >= 0: #Au milieu à gauche
                 grille[l_user][c_user - 1] = int(grillescore[l_user][c_user - 1])
+                if flag_turtle == True:
+                    tr.nombrebombestortue(l_user,c_user - 1,int(grillescore[l_user][c_user - 1]))
             
             if (c_user + 1) < len(grille[0]): #Au milieu à droite
                 grille[l_user][c_user + 1] = int(grillescore[l_user][c_user + 1])
+                if flag_turtle == True:
+                    tr.nombrebombestortue(l_user,c_user + 1,int(grillescore[l_user][c_user + 1]))
             
             if (l_user + 1) < len(grille) and 0 <= (c_user - 1) < len(grille[0]): #En bas à gauche
                 grille[l_user + 1][c_user - 1] = int(grillescore[l_user + 1][c_user - 1])
+                if flag_turtle == True:
+                    tr.nombrebombestortue(l_user + 1,c_user - 1,int(grillescore[l_user + 1][c_user - 1]))
             
             if (l_user + 1) < len(grille): #En bas au milieu
                 grille[l_user + 1][c_user] = int(grillescore[l_user + 1][c_user])
+                if flag_turtle == True:
+                    tr.nombrebombestortue(l_user + 1,c_user,int(grillescore[l_user + 1][c_user]))
             
             if (l_user + 1) < len(grille) and (c_user + 1) < len(grille[0]): #En bas à droite
                 grille[l_user + 1][c_user + 1] = int(grillescore[l_user + 1][c_user + 1])
+                if flag_turtle == True:
+                    tr.nombrebombestortue(l_user + 1,c_user + 1,int(grillescore[l_user + 1][c_user + 1]))
         
         else: #le reste 
             grille[l_user][c_user] = int(grillescore[l_user][c_user])
+            if flag_turtle == True:
+                    tr.nombrebombestortue(l_user,c_user,int(grillescore[l_user][c_user]))
     
     elif action == "f": #Drapeau
 
@@ -330,7 +348,7 @@ printGrille(GrilleJoueur)
 
 if flag_turtle == True:
     import turtlelib as tr
-    tr.grileturtle(nLignes,nColonnes)
+    tr.grilleturtle(nLignes,nColonnes)
 
 while flag_compteur_juste < nBomb and TouchBomb == False: # Le JEU
     l_user, c_user, action_user = user_inter(GrilleNbr)

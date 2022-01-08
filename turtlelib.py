@@ -7,27 +7,28 @@ ATuin.speed(0)
 ATuin.shape("turtle")
 
 ATuin.fillcolor("gray")
-for i in range(nLignes):
-    for k in range(nColonnes):
-        ATuin.up() #évite de dessinner les déplacements
-        ATuin.goto(50*i,-50*k) #fait aller la tortue à la position de la case
-        ATuin.down() #commence à dessiner
-        ATuin.begin_fill() #commence le remplissage des cases
-        for x in range(4): # boucle qui dessine un carré
-            ATuin.forward(40)
-            ATuin.right(90)
-        ATuin.end_fill() #termine le remplissage des cases
+def grilleturtle(nLignes,nColonnes):
+    for i in range(nLignes):
+        for k in range(nColonnes):
+            ATuin.up() #évite de dessinner les déplacements
+            ATuin.goto(50*i,-50*k) #fait aller la tortue à la position de la case
+            ATuin.down() #commence à dessiner
+            ATuin.begin_fill() #commence le remplissage des cases
+            for x in range(4): # boucle qui dessine un carré
+                ATuin.forward(40)
+                ATuin.right(90)
+            ATuin.end_fill() #termine le remplissage des cases
 
-for i in range(nLignes): # dessine les chiffres des colonnes
-    ATuin.up()
-    ATuin.goto(50*i+10,7)
-    ATuin.down()
-    ATuin.write(str(i), font=("Arial", 30, "normal"))
-for k in range(nColonnes): # dessine les chiffres des lignes
-    ATuin.up()
-    ATuin.goto(-40,-50*k-43)
-    ATuin.down()
-    ATuin.write(str(k), font=("Arial", 30, "normal"))
+    for i in range(nLignes): # dessine les chiffres des colonnes
+        ATuin.up()
+        ATuin.goto(50*i+10,7)
+        ATuin.down()
+        ATuin.write(str(i), font=("Arial", 30, "normal"))
+    for k in range(nColonnes): # dessine les chiffres des lignes
+        ATuin.up()
+        ATuin.goto(-40,-50*k-43)
+        ATuin.down()
+        ATuin.write(str(k), font=("Arial", 30, "normal"))
     
 def pointinterrogationtortue(y,x):
     """
