@@ -4,8 +4,7 @@
 
 import random #Grande liste des imports
 import math
-import turtle
-import turtlelib
+
 
 # - - - - - DÉBUT DES FONCTIONS - - - - - -
 
@@ -258,8 +257,22 @@ def DebutGame():
     flag_a = False
     flag_b = False
     flag_c = False
+    flag_d = False
+    flag_turtle = False
 
-    while flag_a == False or flag_b == False or flag_c == False:
+    while flag_a == False or flag_b == False or flag_c == False or flag_d == False:
+        try: #turtle ou pas
+            d = input("Voulez-vous jouer avec les graphisems turtle ? (oui ou non)")
+            
+            if d == "oui":
+                flag_turtle = True
+                flag_d = True
+            elif d == "non":
+                flag_d = True
+            else:
+                print('La réponse doit être "oui" ou "non"')
+        except ValueError:
+            print('La réponse doit être "oui" ou "non"')
         try: #Lignes
             a = input("Combien de lignes voulez-vous ? (Facile: 10, Moyen: 20, Difficile: 50): ")
 
@@ -296,13 +309,13 @@ def DebutGame():
         except ValueError:
             print("Erreur: Nombre de bombes incorrectes")
         
-    return a, b, c
+    return a, b, c, flag_turtle
 
 # - - - - - FIN DES FONCTIONS, MAINTENANT CA DEVIENT RÉEL - - - - - -
 
 # - Début de l'EXPERIENCE
 
-nLignes, nColonnes, nBomb = DebutGame()
+nLignes, nColonnes, nBomb, flag_turtle = DebutGame()
 nLignes, nColonnes, nBomb = int(nLignes), int(nColonnes), int(nBomb)
 GrilleNbr = GrilleScore(putBomb(magrille(nLignes, nColonnes), nBomb)) #Génération de la grille avc toutes les infos
 
@@ -312,6 +325,9 @@ flag_compteur_juste = 0
 TouchBomb = False
 
 printGrille(GrilleJoueur)
+
+if flag_turtle == True:
+    import turtlelib
 
 while flag_compteur_juste < nBomb and TouchBomb == False: # Le JEU
     l_user, c_user, action_user = user_inter(GrilleNbr)
