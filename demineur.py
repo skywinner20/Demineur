@@ -182,88 +182,90 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
     grille = grilleJoueur.copy()
     FlagDebug = False
     n = False
+    try:
+        if action == "m":
 
-    if action == "m":
+            if grille[l_user][c_user] != "□" or grille[l_user][c_user] == "f" or grille[l_user][c_user] == "?": #Case innouvrable
+                n = True
 
-        if grille[l_user][c_user] != "□" or grille[l_user][c_user] == "f" or grille[l_user][c_user] == "?": #Case innouvrable
-            n = True
+            elif grillescore[l_user][c_user] == "B": # Bombe
+                grille[l_user][c_user] == "B"
+                DeathBomb = True
 
-        elif grillescore[l_user][c_user] == "B": # Bombe
-            grille[l_user][c_user] == "B"
-            DeathBomb = True
+            elif grillescore[l_user][c_user] == 0: # Zéro
 
-        elif grillescore[l_user][c_user] == 0: # Zéro
+                grille[l_user][c_user] = int(grillescore[l_user][c_user]) #Remplacer la case
+                #Maintenant, il faut montrer les 8 voisins
 
-            grille[l_user][c_user] = int(grillescore[l_user][c_user]) #Remplacer la case
-            #Maintenant, il faut montrer les 8 voisins
+                if (l_user - 1) >= 0 and (c_user - 1) >= 0: #En haut à gauche
+                    grille[l_user - 1][c_user - 1] = int(grillescore[l_user - 1][c_user - 1])
+                    if flag_turtle == True:
+                        tr.nombrebombestortue(l_user - 1,c_user - 1,int(grillescore[l_user - 1][c_user - 1]))
 
-            if (l_user - 1) >= 0 and (c_user - 1) >= 0: #En haut à gauche
-                grille[l_user - 1][c_user - 1] = int(grillescore[l_user - 1][c_user - 1])
-                if flag_turtle == True:
-                    tr.nombrebombestortue(l_user - 1,c_user - 1,int(grillescore[l_user - 1][c_user - 1]))
+                if (l_user - 1) >= 0: #En haut au milieu
+                    grille[l_user - 1][c_user] = int(grillescore[l_user - 1][c_user])
+                    if flag_turtle == True:
+                        tr.nombrebombestortue(l_user - 1,c_user,int(grillescore[l_user - 1][c_user]))
 
-            if (l_user - 1) >= 0: #En haut au milieu
-                grille[l_user - 1][c_user] = int(grillescore[l_user - 1][c_user])
-                if flag_turtle == True:
-                    tr.nombrebombestortue(l_user - 1,c_user,int(grillescore[l_user - 1][c_user]))
+                if (l_user - 1) >= 0 and (c_user + 1) < len(grille[0]): #En haut à droite
+                    grille[l_user - 1][c_user + 1] = int(grillescore[l_user - 1][c_user + 1])
+                    if flag_turtle == True:
+                        tr.nombrebombestortue(l_user - 1,c_user + 1,int(grillescore[l_user - 1][c_user + 1]))
 
-            if (l_user - 1) >= 0 and (c_user + 1) < len(grille[0]): #En haut à droite
-                grille[l_user - 1][c_user + 1] = int(grillescore[l_user - 1][c_user + 1])
-                if flag_turtle == True:
-                    tr.nombrebombestortue(l_user - 1,c_user + 1,int(grillescore[l_user - 1][c_user + 1]))
-
-            if (c_user - 1) >= 0: #Au milieu à gauche
-                grille[l_user][c_user - 1] = int(grillescore[l_user][c_user - 1])
-                if flag_turtle == True:
-                    tr.nombrebombestortue(l_user,c_user - 1,int(grillescore[l_user][c_user - 1]))
+                if (c_user - 1) >= 0: #Au milieu à gauche
+                    grille[l_user][c_user - 1] = int(grillescore[l_user][c_user - 1])
+                    if flag_turtle == True:
+                        tr.nombrebombestortue(l_user,c_user - 1,int(grillescore[l_user][c_user - 1]))
+                
+                if (c_user + 1) < len(grille[0]): #Au milieu à droite
+                    grille[l_user][c_user + 1] = int(grillescore[l_user][c_user + 1])
+                    if flag_turtle == True:
+                        tr.nombrebombestortue(l_user,c_user + 1,int(grillescore[l_user][c_user + 1]))
+                
+                if (l_user + 1) < len(grille) and 0 <= (c_user - 1) < len(grille[0]): #En bas à gauche
+                    grille[l_user + 1][c_user - 1] = int(grillescore[l_user + 1][c_user - 1])
+                    if flag_turtle == True:
+                        tr.nombrebombestortue(l_user + 1,c_user - 1,int(grillescore[l_user + 1][c_user - 1]))
+                
+                if (l_user + 1) < len(grille): #En bas au milieu
+                    grille[l_user + 1][c_user] = int(grillescore[l_user + 1][c_user])
+                    if flag_turtle == True:
+                        tr.nombrebombestortue(l_user + 1,c_user,int(grillescore[l_user + 1][c_user]))
+                
+                if (l_user + 1) < len(grille) and (c_user + 1) < len(grille[0]): #En bas à droite
+                    grille[l_user + 1][c_user + 1] = int(grillescore[l_user + 1][c_user + 1])
+                    if flag_turtle == True:
+                        tr.nombrebombestortue(l_user + 1,c_user + 1,int(grillescore[l_user + 1][c_user + 1]))
             
-            if (c_user + 1) < len(grille[0]): #Au milieu à droite
-                grille[l_user][c_user + 1] = int(grillescore[l_user][c_user + 1])
+            else: #le reste 
+                grille[l_user][c_user] = int(grillescore[l_user][c_user])
                 if flag_turtle == True:
-                    tr.nombrebombestortue(l_user,c_user + 1,int(grillescore[l_user][c_user + 1]))
-            
-            if (l_user + 1) < len(grille) and 0 <= (c_user - 1) < len(grille[0]): #En bas à gauche
-                grille[l_user + 1][c_user - 1] = int(grillescore[l_user + 1][c_user - 1])
-                if flag_turtle == True:
-                    tr.nombrebombestortue(l_user + 1,c_user - 1,int(grillescore[l_user + 1][c_user - 1]))
-            
-            if (l_user + 1) < len(grille): #En bas au milieu
-                grille[l_user + 1][c_user] = int(grillescore[l_user + 1][c_user])
-                if flag_turtle == True:
-                    tr.nombrebombestortue(l_user + 1,c_user,int(grillescore[l_user + 1][c_user]))
-            
-            if (l_user + 1) < len(grille) and (c_user + 1) < len(grille[0]): #En bas à droite
-                grille[l_user + 1][c_user + 1] = int(grillescore[l_user + 1][c_user + 1])
-                if flag_turtle == True:
-                    tr.nombrebombestortue(l_user + 1,c_user + 1,int(grillescore[l_user + 1][c_user + 1]))
+                        tr.nombrebombestortue(l_user,c_user,int(grillescore[l_user][c_user]))
         
-        else: #le reste 
-            grille[l_user][c_user] = int(grillescore[l_user][c_user])
-            if flag_turtle == True:
-                    tr.nombrebombestortue(l_user,c_user,int(grillescore[l_user][c_user]))
-    
-    elif action == "f": #Drapeau
+        elif action == "f": #Drapeau
 
-        if grillescore[l_user][c_user] == "B": #Si drapeau sur bombe
-            FBomb = True
-            grille[l_user][c_user] = "f"
-        else:
-            grille[l_user][c_user] = "f"
+            if grillescore[l_user][c_user] == "B": #Si drapeau sur bombe
+                FBomb = True
+                grille[l_user][c_user] = "f"
+            else:
+                grille[l_user][c_user] = "f"
 
-        if grille[l_user][c_user] == "f": #Pour enlever le drapeau
-            #if grillescore[l_user][c_user] == "B": #Enlever le drapeau = décès. Ce jeu a pour but de ressembler à un simulateur réaliste de guerre.
-            #    DeathBomb = True
-            grille[l_user][c_user] == "□"
+            if grille[l_user][c_user] == "f": #Pour enlever le drapeau
+                #if grillescore[l_user][c_user] == "B": #Enlever le drapeau = décès. Ce jeu a pour but de ressembler à un simulateur réaliste de guerre.
+                #    DeathBomb = True
+                grille[l_user][c_user] == "□"
 
-    
-    elif action == "?":
-        if grille[l_user][c_user] == "?":
-            grille[l_user][c_user] == "□"
-        else:
-            grille[l_user][c_user] = "?"
+        
+        elif action == "?":
+            if grille[l_user][c_user] == "?":
+                grille[l_user][c_user] == "□"
+            else:
+                grille[l_user][c_user] = "?"
 
-    elif action == "DEBUG":
-        FlagDebug = True
+        elif action == "DEBUG":
+            FlagDebug = True
+    except IndexError:
+        print("Erreur: Case en dehors de la grille.")
 
     return grille, DeathBomb, FBomb, FlagDebug, n
 
