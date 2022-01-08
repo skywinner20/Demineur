@@ -314,7 +314,7 @@ def DebutGame():
     flag_d = False
     flag_turtle = False
 
-    while flag_a == False or flag_b == False or flag_c == False or flag_d == False:
+    while flag_d == False:
         try: #turtle ou pas
             d = input("Voulez-vous jouer avec les graphisems turtle ? (oui ou non): ")
             
@@ -327,6 +327,8 @@ def DebutGame():
                 print('La réponse doit être "oui" ou "non".')
         except ValueError:
             print('La réponse doit être "oui" ou "non".')
+    
+    while flag_a == False:
         try: #Lignes
             a = input("Combien de lignes voulez-vous ? (Facile: 10, Moyen: 20, Difficile: 50): ")
 
@@ -339,6 +341,7 @@ def DebutGame():
         except ValueError:
             print("Erreur: Nombres de lignes incorrectes")
         
+    while flag_b == True:
         try: #Colonnes
             b = input("Combien de colonnes voulez-vous ? (Facile: 10, Moyen: 20, Difficile: 50): ")
 
@@ -351,6 +354,7 @@ def DebutGame():
         except ValueError:
             print("Erreur: Nombres de colonnes incorrectes")
         
+    while flag_c== True:
         try:
             c = input("Combien de bombes voulez-vous ? (Facile: 20, Moyen: 40, Difficile: 100): ")
 
