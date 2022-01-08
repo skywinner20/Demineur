@@ -10,6 +10,7 @@ ATuin.fillcolor("gray")
 def grilleturtle(nLignes,nColonnes):
     for i in range(nLignes):
         for k in range(nColonnes):
+            ATuin.fillcolor("grey")
             ATuin.up() #évite de dessinner les déplacements
             ATuin.goto(50*i,-50*k) #fait aller la tortue à la position de la case
             ATuin.down() #commence à dessiner

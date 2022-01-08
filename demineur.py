@@ -432,5 +432,5 @@ while flag_jeu == False:
             replay = True
         if rejouer == "q":
             replay = True
-            flag_jeu == True
+            flag_jeu = True
     
