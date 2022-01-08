@@ -201,22 +201,22 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
             if (l_user - 1) >= 0: #En haut au milieu
                 grille[l_user - 1][c_user] = int(grillescore[l_user - 1][c_user])
 
-            if (l_user - 1) >= 0 and (c_user + 1) <= len(grille[0]): #En haut à droite
+            if (l_user - 1) >= 0 and (c_user + 1) < len(grille[0]): #En haut à droite
                 grille[l_user - 1][c_user + 1] = int(grillescore[l_user - 1][c_user])
 
             if (c_user - 1) >= 0: #Au milieu à gauche
                 grille[l_user][c_user - 1] = int(grillescore[l_user][c_user - 1])
             
-            if (c_user + 1) <= len(grille[0]): #Au milieu à droite
+            if (c_user + 1) < len(grille[0]): #Au milieu à droite
                 grille[l_user][c_user + 1] = int(grillescore[l_user][c_user + 1])
             
-            if (l_user + 1) <= len(grille) and 0 <= (c_user - 1) <= len(grille[0]): #En bas à gauche
+            if (l_user + 1) <= len(grille) and 0 <= (c_user - 1) < len(grille[0]): #En bas à gauche
                 grille[l_user + 1][c_user - 1] = int(grillescore[l_user + 1][c_user - 1])
             
-            if (l_user + 1) <= len(grille): #En bas au milieu
+            if (l_user + 1) < len(grille): #En bas au milieu
                 grille[l_user + 1][c_user] = int(grillescore[l_user + 1][c_user])
             
-            if (l_user + 1) <= len(grille) and (c_user + 1) <= len(grille[0]): #En bas à droite
+            if (l_user + 1) < len(grille) and (c_user + 1) < len(grille[0]): #En bas à droite
                 grille[l_user + 1][c_user + 1] = int(grillescore[l_user + 1][c_user + 1])
         
         else: #le reste 
