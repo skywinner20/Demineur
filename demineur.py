@@ -315,7 +315,7 @@ def DebutGame():
 
     while flag_a == False or flag_b == False or flag_c == False or flag_d == False:
         try: #turtle ou pas
-            d = input("Voulez-vous jouer avec les graphisems turtle ? (oui ou non)")
+            d = input("Voulez-vous jouer avec les graphisems turtle ? (oui ou non): ")
             
             if d == "oui":
                 flag_turtle = True
