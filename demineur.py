@@ -244,41 +244,39 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
         
         elif action == "f": #Drapeau
 
-<<<<<<< HEAD
-        if grillescore[l_user][c_user] == "B": #Si drapeau sur bombe
-            FBomb = True
-            grille[l_user][c_user] = "f"
-            if flag_turtle == True:
-                    tr.drapeautortue(l_user,c_user)
-                    
-        elif grille[l_user][c_user] == "f": #Pour enlever le drapeau
-            #if grillescore[l_user][c_user] == "B": #Enlever le drapeau = décès. Ce jeu a pour but de ressembler à un simulateur réaliste de guerre.
-            #    DeathBomb = True
-            grille[l_user][c_user] == "□"
-            if flag_turtle == True:
-                    tr.casenormaleturtle(l_user,c_user)
-            
-        else:
-            grille[l_user][c_user] = "f"
-            if flag_turtle == True:
-                    tr.drapeautortue(l_user,c_user)
+            if grillescore[l_user][c_user] == "B": #Si drapeau sur bombe
+                FBomb = True
+                grille[l_user][c_user] = "f"
+                if flag_turtle == True:
+                        tr.drapeautortue(l_user,c_user)
+                        
+            elif grille[l_user][c_user] == "f": #Pour enlever le drapeau
+                #if grillescore[l_user][c_user] == "B": #Enlever le drapeau = décès. Ce jeu a pour but de ressembler à un simulateur réaliste de guerre.
+                #    DeathBomb = True
+                grille[l_user][c_user] == "□"
+                if flag_turtle == True:
+                        tr.casenormaleturtle(l_user,c_user)
+                
+            else:
+                grille[l_user][c_user] = "f"
+                if flag_turtle == True:
+                        tr.drapeautortue(l_user,c_user)
 
         
     
-    elif action == "?":
-        if grille[l_user][c_user] == "?":
-            grille[l_user][c_user] == "□"
-            if flag_turtle == True:
-                    tr.casenormaleturtle(l_user,c_user)
-                    
-        else:
-            grille[l_user][c_user] = "?"
-            if flag_turtle == True:
-                    tr.pointinterrogationtortue(l_user,c_user)
+        elif action == "?":
+            if grille[l_user][c_user] == "?":
+                grille[l_user][c_user] == "□"
+                if flag_turtle == True:
+                        tr.casenormaleturtle(l_user,c_user)
+                        
+            else:
+                grille[l_user][c_user] = "?"
+                if flag_turtle == True:
+                        tr.pointinterrogationtortue(l_user,c_user)
 
-    elif action == "DEBUG":
-        FlagDebug = True
-=======
+        elif action == "DEBUG":
+            FlagDebug = True
             if grillescore[l_user][c_user] == "B": #Si drapeau sur bombe
                 FBomb = True
                 grille[l_user][c_user] = "f"
@@ -301,7 +299,6 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
             FlagDebug = True
     except IndexError:
         print("Erreur: Case en dehors de la grille.")
->>>>>>> bed7b074d48d32f253e63c441710ebadc68e168e
 
     return grille, DeathBomb, FBomb, FlagDebug, n
 
