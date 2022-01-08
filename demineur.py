@@ -5,6 +5,7 @@
 import random #Grande liste des imports
 import math
 import turtle
+import turtlelib
 
 # - - - - - DÉBUT DES FONCTIONS - - - - - -
 
