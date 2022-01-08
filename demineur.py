@@ -196,6 +196,8 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
             elif grillescore[l_user][c_user] == 0: # Zéro
 
                 grille[l_user][c_user] = int(grillescore[l_user][c_user]) #Remplacer la case
+                if flag_turtle == True:
+                    tr.nombrebombestortue(l_user,c_user,int(grillescore[l_user][c_user]))
                 #Maintenant, il faut montrer les 8 voisins
 
                 if (l_user - 1) >= 0 and (c_user - 1) >= 0: #En haut à gauche
