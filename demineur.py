@@ -341,7 +341,7 @@ def DebutGame():
         except ValueError:
             print("Erreur: Nombres de lignes incorrectes")
         
-    while flag_b == True:
+    while flag_b == False:
         try: #Colonnes
             b = input("Combien de colonnes voulez-vous ? (Facile: 10, Moyen: 20, Difficile: 50): ")
 
@@ -354,7 +354,7 @@ def DebutGame():
         except ValueError:
             print("Erreur: Nombres de colonnes incorrectes")
         
-    while flag_c== True:
+    while flag_c == False:
         try:
             c = input("Combien de bombes voulez-vous ? (Facile: 20, Moyen: 40, Difficile: 100): ")
 
