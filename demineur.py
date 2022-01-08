@@ -397,9 +397,9 @@ while flag_compteur_juste < nBomb and TouchBomb == False: # Le JEU
         print("     ,--.!,\n  __/   -*-\n,d08b.  '|`\n0088MM\n`9MMP'   Game Over. C'était une bombe.")
         print("Voici la grille complète:")
         printGrille(GrilleNbr)
-        print("rééssayez !")
+        print("Rééssayez !")
     if flag_compteur_juste == nBomb:
         printGrille(GrilleNbr)
         print("___________/|\n (__|||__) \| Bravo ! Vous avez gagné ! \n Merci d'avoir joué !")
 
-print("Pour rejouer relancez le programme !")
+print("Pour rejouer, relancez le programme !")
