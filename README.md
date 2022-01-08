@@ -19,9 +19,9 @@ Voici les mouvements possibles:
 >Permet de libérer une case. Attention, si vous marcher sur une bombe, c'est Game Over !
 
 >**F, Drapeau:**
->Permet de baliser une case.
+>Permet de signaler une case comme étant minée.
 
 >**?, Interrogation**
 >Si vous n'êtes pas sûr s'il s'agit d'une bombe ou pas.
 
-Le jeu se termine lorsque toutes les mines sont balisées, ou lorsque vous marchez sur une bombe. Bonne chance !
+Le jeu se termine lorsque toutes les mines sont signalée par un drapeau, ou lorsque vous marchez sur une bombe. Bonne chance !
