@@ -24,4 +24,6 @@ Voici les mouvements possibles:
 >**?, Interrogation**
 >Si vous n'êtes pas sûr s'il s'agit d'une bombe ou pas. Pour enlever l'interrogation, refaites l'action "?" sur la case signalée.
 
-Le jeu se termine lorsque toutes les mines sont signalée par un drapeau, ou lorsque vous marchez sur une bombe. Bonne chance !
+
+Le jeu se termine lorsque toutes les mines sont marquées, ou lorsque vous marchez sur une bombe. Bonne chance !
+
