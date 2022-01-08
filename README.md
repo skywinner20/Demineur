@@ -19,9 +19,9 @@ Voici les mouvements possibles:
 >Permet de libérer une case. Attention, si vous marcher sur une bombe, c'est Game Over !
 
 >**F, Drapeau:**
->Permet de signaler une case comme étant minée. Pour enlever un drapeau, il faut "ajouter un drapeau sur un drapeau".
+>Permet de signaler une case comme étant minée. Pour enlever un drapeau, refaites l'action "Drapeau" sur la case déjà signalée.
 
 >**?, Interrogation**
->Si vous n'êtes pas sûr s'il s'agit d'une bombe ou pas.
+>Si vous n'êtes pas sûr s'il s'agit d'une bombe ou pas. Pour enlever l'interrogation, refaites l'action "?" sur la case signalée.
 
 Le jeu se termine lorsque toutes les mines sont signalée par un drapeau, ou lorsque vous marchez sur une bombe. Bonne chance !

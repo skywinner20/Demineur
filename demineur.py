@@ -235,7 +235,10 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
 
     
     elif action == "?":
-        grille[l_user][c_user] = "?"
+        if grille[l_user][c_user] == "?":
+            grille[l_user][c_user] == "□"
+        else:
+            grille[l_user][c_user] = "?"
 
     elif action == "DEBUG":
         FlagDebug = True
@@ -307,7 +310,7 @@ TouchBomb = False
 
 printGrille(GrilleJoueur)
 
-while flag_compteur_juste < nBomb or TouchBomb == False: # Le JEU
+while flag_compteur_juste < nBomb and TouchBomb == False: # Le JEU
     l_user, c_user, action_user = user_inter(GrilleNbr)
     grilleJoueur, TouchBomb, FlagBomb, FlagDebug, FlagNon = gameplay(l_user, c_user, action_user, GrilleJoueur, GrilleNbr)
     if FlagDebug == True:
