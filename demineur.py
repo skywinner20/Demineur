@@ -196,6 +196,9 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
             elif grillescore[l_user][c_user] == 0: # Zéro
 
                 grille[l_user][c_user] = int(grillescore[l_user][c_user]) #Remplacer la case
+                if flag_turtle == True:
+                        tr.nombrebombestortue(l_user,c_user,int(grillescore[l_user][c_user]))
+
                 #Maintenant, il faut montrer les 8 voisins
 
                 if (l_user - 1) >= 0 and (c_user - 1) >= 0: #En haut à gauche
@@ -395,9 +398,26 @@ while flag_compteur_juste < nBomb and TouchBomb == False: # Le JEU
         print("     ,--.!,\n  __/   -*-\n,d08b.  '|`\n0088MM\n`9MMP'   Game Over. C'était une bombe.")
         print("Voici la grille complète:")
         printGrille(GrilleNbr)
+        if flag_turtle == True:
+            for i in range(len(GrilleNbr)):
+                for k in range(len(GrilleNbr[i])):
+                    if GrilleNbr[i][k] == "B":
+                        tr.bombeturtle(i,k)
+                    else:
+                        tr.nombrebombestortue(i,k,GrilleNbr[i][k])
+                    
+        
         print("rééssayez !")
     if flag_compteur_juste == nBomb:
         printGrille(GrilleNbr)
+        if flag_turtle == True:
+            for i in range(len(GrilleNbr)):
+                for k in range(len(GrilleNbr[i])):
+                    if GrilleNbr[i][k] == "B":
+                        tr.bombeturtle(i,k)
+                    else:
+                        tr.nombrebombestortue(i,k,GrilleNbr[i][k])
+                    
         print("___________/|\n (__|||__) \| Bravo ! Vous avez gagné ! \n Merci d'avoir joué !")
 
 print("Pour rejouer relancez le programme !")
