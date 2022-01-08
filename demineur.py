@@ -187,6 +187,7 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
             n = True
 
         elif grillescore[l_user][c_user] == "B": # Bombe
+            grille[l_user][c_user] == "B"
             DeathBomb = True
 
         elif grillescore[l_user][c_user] == 0: # Zéro
@@ -317,8 +318,9 @@ while flag_compteur_juste < nBomb or TouchBomb == False: # Le JEU
         print("Case intouchable !")
     printGrille(GrilleJoueur)
     if TouchBomb == True:
-        printGrille(GrilleNbr)
         print("     ,--.!,\n  __/   -*-\n,d08b.  '|`\n0088MM\n`9MMP'   Game Over. C'était une bombe.")
+        print("Voici la case en entier:")
+        printGrille(GrilleNbr)
     if flag_compteur_juste == nBomb:
         printGrille(GrilleNbr)
         print("___________/|\n (__|||__) \| Bravo ! Vous avez gagné !")
