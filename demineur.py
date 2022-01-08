@@ -123,7 +123,7 @@ def user_inter(liste_grille): # Interaction user
     """
     Prends la liste de la grille, demande les variables lignes colonnes action au user pour savoir ce qu'il veut faire et retourne l_user, c_user et action tq. l_user = ligne choisie, c_user = colonne choisie et action = action choisie
     
-    action possible: m, F, ?
+    action possible: m, f, ?
     """
     flag_nbr = False #Flag pour les nombres
     flag_action = False #Flag pour l'action
@@ -131,7 +131,7 @@ def user_inter(liste_grille): # Interaction user
 
     while flag_nbr == False or flag_action == False: #Testeurs pour savoir si les variables sont légales ou pas
         try:    
-            l_user, c_user, action = input("Que voulez-vous faire? (ligne colonne action, action possibles: m(Marcher), F(Drapeau), ?): ").split(" ")
+            l_user, c_user, action = input("Que voulez-vous faire? (ligne colonne action, action possibles: m(Marcher), f(Drapeau), ?): ").split(" ")
         except ValueError:
             print("Erreur: Nombre de paramètres faux") 
 
@@ -154,7 +154,7 @@ def user_inter(liste_grille): # Interaction user
         try: #Verif action légal
             if action == "m":
                 flag_action = True
-            elif action == "F":
+            elif action == "f":
                 flag_action = True
             elif action == "?":
                 flag_action = True
@@ -171,7 +171,7 @@ def user_inter(liste_grille): # Interaction user
 def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se jouer le GAMING (interaction userinput et grille)
     """
     Prends les valeurs l_user, c_user, action, grille que modifie le joueur, la grille scorée, et retourne la grille modifiée en circonstance, DeathBomb si une bombe est touchée,
-    FBomb si un F a été placé sur une bombe, n si une case intouchable est touchée
+    FBomb si un f a été placé sur une bombe, n si une case intouchable est touchée
     """
     DeathBomb = False
     FBomb = False
@@ -183,7 +183,7 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
 
     if action == "m":
 
-        if grille[l_user][c_user] != "□" or grille[l_user][c_user] == "F" or grille[l_user][c_user] == "?": #Case innouvrable
+        if grille[l_user][c_user] != "□" or grille[l_user][c_user] == "f" or grille[l_user][c_user] == "?": #Case innouvrable
             n = True
 
         elif grillescore[l_user][c_user] == "B": # Bombe
@@ -222,13 +222,15 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
         else: #le reste 
             grille[l_user][c_user] = int(grillescore[l_user][c_user])
     
-    elif action == "F": #Drapeau
+    elif action == "f": #Drapeau
 
         if grillescore[l_user][c_user] == "B": #Si drapeau sur bombe
             FBomb = True
-            grille[l_user][c_user] = "F"
+            grille[l_user][c_user] = "f"
+        else:
+            grille[l_user][c_user] = "f"
 
-        if grille[l_user][c_user] == "F": #Pour enlever le drapeau
+        if grille[l_user][c_user] == "f": #Pour enlever le drapeau
             #if grillescore[l_user][c_user] == "B": #Enlever le drapeau = décès. Ce jeu a pour but de ressembler à un simulateur réaliste de guerre.
             #    DeathBomb = True
             grille[l_user][c_user] == "□"
