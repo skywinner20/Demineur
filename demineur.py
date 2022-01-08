@@ -5,6 +5,8 @@
 import random #Grande liste des imports
 import math
 
+from turtlelib import grileturtle
+
 
 # - - - - - DÉBUT DES FONCTIONS - - - - - -
 
@@ -327,7 +329,8 @@ TouchBomb = False
 printGrille(GrilleJoueur)
 
 if flag_turtle == True:
-    import turtlelib
+    import turtlelib as tr
+    tr.grileturtle(nLignes,nColonnes)
 
 while flag_compteur_juste < nBomb and TouchBomb == False: # Le JEU
     l_user, c_user, action_user = user_inter(GrilleNbr)
