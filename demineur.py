@@ -210,7 +210,7 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
             if (c_user + 1) <= len(grille[0]): #Au milieu à droite
                 grille[l_user][c_user + 1] = int(grillescore[l_user][c_user + 1])
             
-            if (l_user + 1) <= len(grille) and (c_user - 1) <= len(grille[0]): #En bas à gauche
+            if (l_user + 1) <= len(grille) and 0 <= (c_user - 1) <= len(grille[0]): #En bas à gauche
                 grille[l_user + 1][c_user - 1] = int(grillescore[l_user + 1][c_user - 1])
             
             if (l_user + 1) <= len(grille): #En bas au milieu
