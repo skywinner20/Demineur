@@ -26,15 +26,21 @@ def printGrille(magrille):
     """
     nbligne = len(magrille)
     nbcol = len(magrille[0])
-    affichage_col = "- "
+    affichage_col = "-  "
     for i in range(nbcol):
-        affichage_col += " {0} ".format(i)
+        if i < 10:
+            affichage_col += " {0} ".format(i)
+        else:
+            affichage_col += "{0} ".format(i)
     print(affichage_col)
     for i in range(nbligne):
         lignetexte = "|"
         for j in range(nbcol):
-            lignetexte += "{0} |".format(magrille[i][j])
-        print("{0} {1}".format(i, lignetexte))
+                lignetexte += "{0} |".format(magrille[i][j])
+        if i < 10:
+            print("{0}  {1}".format(i, lignetexte))
+        else:
+            print("{0} {1}".format(i, lignetexte))
 
 def genPos(l,c):
     """
@@ -330,29 +336,29 @@ def DebutGame():
     
     while flag_a == False:
         try: #Lignes
-            a = input("Combien de lignes voulez-vous ? (Facile: 10, Moyen: 20, Difficile: 50): ")
+            a = input("Combien de lignes voulez-vous ? (Facile: 5, Moyen: 10, Difficile: 15): ")
 
             if int(a) >= 5 and int(a) <= 70:
                 a = int(a)
                 flag_a = True
             else:
-                print("Erreur: Nombres de lignes incorrectes")
+                print("Erreur: le Nombre de ligne doit être entre 5 et 70")
 
         except ValueError:
-            print("Erreur: Nombres de lignes incorrectes")
+            print("Erreur: le Nombre de ligne doit être entre 5 et 70")
         
     while flag_b == False:
         try: #Colonnes
-            b = input("Combien de colonnes voulez-vous ? (Facile: 10, Moyen: 20, Difficile: 50): ")
+            b = input("Combien de colonnes voulez-vous ? (Facile: 5, Moyen: 10, Difficile: 15): ")
 
             if int(b) >= 5 and int(b) <= 70:
                 b = int(b)
                 flag_b = True
             else:
-                print("Erreur: Nombres de colonnes incorrectes")
+                print("Erreur: le nombre de colonnes doit être entre 5 et 70")
 
         except ValueError:
-            print("Erreur: Nombres de colonnes incorrectes")
+            print("Erreur: le nombre de colonnes doit être entre 5 et 70")
         
     while flag_c == False:
         try:
@@ -362,10 +368,10 @@ def DebutGame():
                 c = int(c)
                 flag_c = True
             else:
-                print("Erreur: Nombre de bombes incorrectes")
+                print("Erreur: Il doit y avoir entre 5 et la moitié du nombre de cases de bombes")
         
         except ValueError:
-            print("Erreur: Nombre de bombes incorrectes")
+            print("Erreur: Il doit y avoir entre 5 et la moitié du nombre de cases de bombes")
         
     return a, b, c, flag_turtle
 
@@ -373,7 +379,7 @@ def DebutGame():
 
 # - Début de l'EXPERIENCE
 flag_jeu = False
-while flag_jeu == False:
+while flag_jeu == False: #permet de rejouer
     nLignes, nColonnes, nBomb, flag_turtle = DebutGame()
     nLignes, nColonnes, nBomb = int(nLignes), int(nColonnes), int(nBomb)
     GrilleNbr = GrilleScore(putBomb(magrille(nLignes, nColonnes), nBomb)) #Génération de la grille avc toutes les infos
@@ -427,7 +433,7 @@ while flag_jeu == False:
 
     replay = False
     while replay == False:
-        rejouer=input('Pour rejouer, apuyez sur "r", pour quitter le programme appuyez sur "q"')
+        rejouer=input('Pour rejouer entrez "r", pour quitter le programme entrez "q"')
         if rejouer == "r":
             replay = True
         if rejouer == "q":

@@ -20,14 +20,17 @@ def grilleturtle(nLignes,nColonnes):
                 ATuin.right(90)
             ATuin.end_fill() #termine le remplissage des cases
 
-    for i in range(nLignes): # dessine les chiffres des colonnes
+    for i in range(nLignes):
         ATuin.up()
-        ATuin.goto(50*i+10,7)
+        if i < 10:
+            ATuin.goto(50*i+10,7)
+        else:
+            ATuin.goto(50*i,7)
         ATuin.down()
         ATuin.write(str(i), font=("Arial", 30, "normal"))
-    for k in range(nColonnes): # dessine les chiffres des lignes
+    for k in range(nColonnes):
         ATuin.up()
-        ATuin.goto(-40,-50*k-43)
+        ATuin.goto(-50,-50*k-43)
         ATuin.down()
         ATuin.write(str(k), font=("Arial", 30, "normal"))
     
