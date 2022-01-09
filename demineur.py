@@ -342,10 +342,10 @@ def DebutGame():
                 a = int(a)
                 flag_a = True
             else:
-                print("Erreur: le Nombre de ligne doit être entre 5 et 70")
+                print("Erreur: Le nombre de ligne doit être entre 5 et 70")
 
         except ValueError:
-            print("Erreur: le Nombre de ligne doit être entre 5 et 70")
+            print("Erreur: Le nombre de ligne doit être entre 5 et 70")
         
     while flag_b == False:
         try: #Colonnes
@@ -355,23 +355,23 @@ def DebutGame():
                 b = int(b)
                 flag_b = True
             else:
-                print("Erreur: le nombre de colonnes doit être entre 5 et 70")
+                print("Erreur: Le nombre de colonnes doit être entre 5 et 70.")
 
         except ValueError:
-            print("Erreur: le nombre de colonnes doit être entre 5 et 70")
+            print("Erreur: Le nombre de colonnes doit être entre 5 et 70.")
         
     while flag_c == False:
         try:
-            c = input("Combien de bombes voulez-vous ? (Facile: 20, Moyen: 40, Difficile: 100): ")
+            c = input("Combien de bombes voulez-vous ? (Facile: 5, Moyen: 20, Difficile: 50): ")
 
             if int(c) <= (int(a)*int(b))/2 and int(c) >= 5:
                 c = int(c)
                 flag_c = True
             else:
-                print("Erreur: Il doit y avoir entre 5 et la moitié du nombre de cases de bombes")
+                print("Erreur: Il doit y avoir entre 5 et la moitié du nombre de cases de bombes.")
         
         except ValueError:
-            print("Erreur: Il doit y avoir entre 5 et la moitié du nombre de cases de bombes")
+            print("Erreur: Il doit y avoir entre 5 et la moitié du nombre de cases de bombes.")
         
     return a, b, c, flag_turtle
 
@@ -433,7 +433,7 @@ while flag_jeu == False: #permet de rejouer
 
     replay = False
     while replay == False:
-        rejouer=input('Pour rejouer entrez "r", pour quitter le programme entrez "q"')
+        rejouer=input('Pour rejouer, entrez "r". Pour quitter le programme, entrez "q".')
         if rejouer == "r":
             replay = True
         if rejouer == "q":
