@@ -9,13 +9,13 @@ Lancez le fichier demineur.py.
 >python ./demineur.py
 
 Choisissez si vous souhaitez avoir l'interface graphique. Ensuite, choisissez le nombres de lignes, de colonnes et de bombes que vous souhaitez.
-Voici plusieurs difficultés possibles.
+Vous pouvez choisir les nombres que vous voulez, mais, pour vous guider, voici plusieurs difficultés possibles. Le maximum est 70 lignes, 70 colonnes et 2450 bombes. Cependant, nous ne vous conseillons pas cette configuration.
 
->**Facile**: 10 lignes, 10 colonnes et 20 bombes.
+>**Facile**: 5 lignes, 5 colonnes et 5 bombes.
 >
->**Moyen**: 20 lignes, 20 colonnes et 40 bombes.
+>**Moyen**: 10 lignes, 10 colonnes et 20 bombes.
 >
->**Difficile**: 50 lignes, 50 colonnes et 100 bombes.
+>**Difficile**: 15 lignes, 15 colonnes et 50 bombes.
 
 Ensuite, vous pouvez explorer chaque case suivant comment vous voulez les manipuler.
 
