@@ -184,78 +184,94 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
     FBomb = False #Si true -> Case minée flaguée
     l_user = int(l_user) #Simplifier ce cambouilli
     c_user = int(c_user)
-    grille = grilleJoueur.copy() #Juste moi qui panique, techniquement cette commande est redondante, mais j'ose pas l'enlever par peur de tout casser
+    grilleJoueur = grilleJoueur.copy() #Juste moi qui panique, techniquement cette commande est redondante, mais j'ose pas l'enlever par peur de tout casser
     FlagDebug = False #Si true -> Active Debug: Affiche la grille
     n = False #Si true -> Erreur, ne fais rien a la grille et relance le joueur
     FlagFlag = 0 #Si 1 -> drapeau posé, si 2 -> drapeau retiré, si 3 -> drapeau retiré alors qu'il est juste
     try:
         if action == "m": #Si action Marcher
 
-            if grille[l_user][c_user] != "□" or grille[l_user][c_user] == "f" or grille[l_user][c_user] == "?": #Case innouvrable
+            if grilleJoueur[l_user][c_user] != "□" or grilleJoueur[l_user][c_user] == "f" or grilleJoueur[l_user][c_user] == "?": #Case innouvrable
                 n = True
 
             elif grillescore[l_user][c_user] == "B": #Marcher sur Bombe
-                grille[l_user][c_user] == "B"
+                grilleJoueur[l_user][c_user] == "B"
                 DeathBomb = True
 
             elif grillescore[l_user][c_user] == 0: #Marcher sur Zéro
 
-                grille[l_user][c_user] = int(grillescore[l_user][c_user]) #Remplacer la case
+                grilleJoueur[l_user][c_user] = int(grillescore[l_user][c_user]) #Remplacer la case
                 if flag_turtle == True:
                     tr.nombrebombestortue(l_user,c_user,int(grillescore[l_user][c_user]))
 
                 # - - - Maintenant, il faut montrer les 8 voisins - - -
 
                 if (l_user - 1) >= 0 and (c_user - 1) >= 0: #En haut à gauche
-                    grille[l_user - 1][c_user - 1] = int(grillescore[l_user - 1][c_user - 1])
+                    grilleJoueur[l_user - 1][c_user - 1] = int(grillescore[l_user - 1][c_user - 1])
                     if flag_turtle == True:
                         tr.nombrebombestortue(l_user - 1,c_user - 1,int(grillescore[l_user - 1][c_user - 1]))
+                    if grillescore[l_user - 1][c_user - 1] == 0:
+                        grilleJoueur, a, b, c, d, e = gameplay(l_user - 1, c_user - 1, action, grilleJoueur, grillescore) #0 en cascades
 
                 if (l_user - 1) >= 0: #En haut au milieu
-                    grille[l_user - 1][c_user] = int(grillescore[l_user - 1][c_user])
+                    grilleJoueur[l_user - 1][c_user] = int(grillescore[l_user - 1][c_user])
                     if flag_turtle == True:
                         tr.nombrebombestortue(l_user - 1,c_user,int(grillescore[l_user - 1][c_user]))
+                    if grillescore[l_user - 1][c_user] == 0:
+                        grilleJoueur, a, b, c, d, e = gameplay(l_user - 1, c_user, action, grilleJoueur, grillescore) #0 en cascades
 
-                if (l_user - 1) >= 0 and (c_user + 1) < len(grille[0]): #En haut à droite
-                    grille[l_user - 1][c_user + 1] = int(grillescore[l_user - 1][c_user + 1])
+                if (l_user - 1) >= 0 and (c_user + 1) < len(grilleJoueur[0]): #En haut à droite
+                    grilleJoueur[l_user - 1][c_user + 1] = int(grillescore[l_user - 1][c_user + 1])
                     if flag_turtle == True:
                         tr.nombrebombestortue(l_user - 1,c_user + 1,int(grillescore[l_user - 1][c_user + 1]))
+                    if grillescore[l_user - 1][c_user + 1] == 0:
+                        grilleJoueur, a, b, c, d, e = gameplay(l_user - 1, c_user + 1, action, grilleJoueur, grillescore) #0 en cascades
 
                 if (c_user - 1) >= 0: #Au milieu à gauche
-                    grille[l_user][c_user - 1] = int(grillescore[l_user][c_user - 1])
+                    grilleJoueur[l_user][c_user - 1] = int(grillescore[l_user][c_user - 1])
                     if flag_turtle == True:
                         tr.nombrebombestortue(l_user,c_user - 1,int(grillescore[l_user][c_user - 1]))
+                    if grillescore[l_user][c_user - 1] == 0:
+                        grilleJoueur, a, b, c, d, e = gameplay(l_user, c_user - 1, action, grilleJoueur, grillescore) #0 en cascades
                 
-                if (c_user + 1) < len(grille[0]): #Au milieu à droite
-                    grille[l_user][c_user + 1] = int(grillescore[l_user][c_user + 1])
+                if (c_user + 1) < len(grilleJoueur[0]): #Au milieu à droite
+                    grilleJoueur[l_user][c_user + 1] = int(grillescore[l_user][c_user + 1])
                     if flag_turtle == True:
                         tr.nombrebombestortue(l_user,c_user + 1,int(grillescore[l_user][c_user + 1]))
+                    if grillescore[l_user - 1][c_user - 1] == 0:
+                        grilleJoueur, a, b, c, d, e = gameplay(l_user, c_user + 1, action, grilleJoueur, grillescore) #0 en cascades
                 
-                if (l_user + 1) < len(grille) and 0 <= (c_user - 1) < len(grille[0]): #En bas à gauche
-                    grille[l_user + 1][c_user - 1] = int(grillescore[l_user + 1][c_user - 1])
+                if (l_user + 1) < len(grilleJoueur) and 0 <= (c_user - 1) < len(grilleJoueur[0]): #En bas à gauche
+                    grilleJoueur[l_user + 1][c_user - 1] = int(grillescore[l_user + 1][c_user - 1])
                     if flag_turtle == True:
                         tr.nombrebombestortue(l_user + 1,c_user - 1,int(grillescore[l_user + 1][c_user - 1]))
+                    if grillescore[l_user + 1][c_user - 1] == 0:
+                        grilleJoueur, a, b, c, d, e = gameplay(l_user + 1, c_user - 1, action, grilleJoueur, grillescore) #0 en cascades
                 
-                if (l_user + 1) < len(grille): #En bas au milieu
-                    grille[l_user + 1][c_user] = int(grillescore[l_user + 1][c_user])
+                if (l_user + 1) < len(grilleJoueur): #En bas au milieu
+                    grilleJoueur[l_user + 1][c_user] = int(grillescore[l_user + 1][c_user])
                     if flag_turtle == True:
                         tr.nombrebombestortue(l_user + 1,c_user,int(grillescore[l_user + 1][c_user]))
+                    if grillescore[l_user + 1][c_user] == 0:
+                        grilleJoueur, a, b, c, d, e = gameplay(l_user + 1, c_user, action, grilleJoueur, grillescore) #0 en cascades
                 
-                if (l_user + 1) < len(grille) and (c_user + 1) < len(grille[0]): #En bas à droite
-                    grille[l_user + 1][c_user + 1] = int(grillescore[l_user + 1][c_user + 1])
+                if (l_user + 1) < len(grilleJoueur) and (c_user + 1) < len(grilleJoueur[0]): #En bas à droite
+                    grilleJoueur[l_user + 1][c_user + 1] = int(grillescore[l_user + 1][c_user + 1])
                     if flag_turtle == True:
                         tr.nombrebombestortue(l_user + 1,c_user + 1,int(grillescore[l_user + 1][c_user + 1]))
+                    if grillescore[l_user + 1][c_user + 1] == 0:
+                        grilleJoueur, a, b, c, d, e = gameplay(l_user + 1, c_user + 1, action, grilleJoueur, grillescore) #0 en cascades
             
             else: #le reste 
-                grille[l_user][c_user] = int(grillescore[l_user][c_user])
+                grilleJoueur[l_user][c_user] = int(grillescore[l_user][c_user])
                 if flag_turtle == True:
                         tr.nombrebombestortue(l_user,c_user,int(grillescore[l_user][c_user]))
         
         elif action == "f": #Drapeau
             
             FlagFlag = 1 #Drapeau posé
-            if grille[l_user][c_user] == "f": #Pour enlever le drapeau
-                grille[l_user][c_user] = "□"
+            if grilleJoueur[l_user][c_user] == "f": #Pour enlever le drapeau
+                grilleJoueur[l_user][c_user] = "□"
                 if flag_turtle == True:
                         tr.casenormaleturtle(l_user,c_user)
                 if grillescore[l_user][c_user] == "B": #Si drapeau retiré sur case minée
@@ -263,12 +279,12 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
             
             elif grillescore[l_user][c_user] == "B": #Si drapeau sur bombe
                 FBomb = True
-                grille[l_user][c_user] = "f"
+                grilleJoueur[l_user][c_user] = "f"
                 if flag_turtle == True:
                         tr.drapeautortue(l_user,c_user)
                 
             else: #Drapeau sur case vide
-                grille[l_user][c_user] = "f"
+                grilleJoueur[l_user][c_user] = "f"
                 if flag_turtle == True:
                         tr.drapeautortue(l_user,c_user)
                 FlagFlag = 2
@@ -276,12 +292,12 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
             
     
         elif action == "?": #Interrogation
-            if grille[l_user][c_user] == "?":
-                grille[l_user][c_user] = "□"
+            if grilleJoueur[l_user][c_user] == "?":
+                grilleJoueur[l_user][c_user] = "□"
                 if flag_turtle == True:
                         tr.casenormaleturtle(l_user,c_user)       
             else:
-                grille[l_user][c_user] = "?"
+                grilleJoueur[l_user][c_user] = "?"
                 if flag_turtle == True:
                         tr.pointinterrogationtortue(l_user,c_user)
         
@@ -290,7 +306,7 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
     except IndexError:
         print("Erreur: Case en dehors de la grille.")
 
-    return grille, DeathBomb, FBomb, FlagDebug, n, FlagFlag
+    return grilleJoueur, DeathBomb, FBomb, FlagDebug, n, FlagFlag
 
 def DebutGame():
     """
@@ -445,6 +461,10 @@ while flag_jeu == False: #permet de rejouer
                             tr.nombrebombestortue(i,k,GrilleNbr[i][k])
                         
             print("___________/|\n (__|||__) \| Bravo ! Vous avez gagné ! \n Merci d'avoir joué !")
+    # - - -
+    if flag_turtle == True:
+        discworld.reset()
+        turtle.reset()
 
     # - - - Replay - - -
     replay = False
