@@ -1,13 +1,12 @@
-# --- Ardi et Cédric ---
+#      ,--.!,
+#   __/   -*-
+# ,d08b.  '|`
+# 0088MM
+# `9MMP'  --- Ardi et Cédric, Démineur ---
 # Bienvenue dans le futur jeu vidéo du siècle, litéralement le GOTY 2022, on a déjà été contacté par EA, Sony, Microsoft et Microids Studios
-#TODO: - Le Gameover, l'intégration de turtle
 
-
-import random #Grande liste des imports
+import random #Les imports
 import math
-
-
-
 
 # - - - - - DÉBUT DES FONCTIONS - - - - - -
 
@@ -75,7 +74,7 @@ def GrilleScore(grille_bombee): #Entendre par là: la grille avec les bombes pla
             if grille_bombee[i][k] == "B":
                 n = "B"     #Nbr de bombes voisins
             else:
-                try:
+                try: #Enchainement de try
                     if grille_bombee[i - 1][k - 1] == "B" and i != 0 and k != 0: #En haut à gauche
                         n += 1
                 except IndexError:
@@ -142,17 +141,16 @@ def user_inter(liste_grille): # Interaction user
         try:    
             l_user, c_user, action = input("Que voulez-vous faire? (ligne colonne action, action possibles: m(Marcher), f(Drapeau), ?): ").split(" ")
         except ValueError:
-            print("Erreur: Nombre de paramètres faux") 
+            print("Erreur: Nombre de paramètres faux") #Cette erreur est retournée si input().split() reçoit trop d'arguments
 
-        try: #Bien des valeurs
+        try: #Bien des valeurs et pas autre chose
             l_user = int(l_user)
             c_user = int(c_user)
             flag_nbr_mem = True
-        except ValueError:
+        except ValueError: #Erreur retournée si int() impossible
             print("Erreur: Nombre(s) incorrecte(s)")
 
-        #if l_user.isdigit == True and c_user.isdigit == True: #Verif de nombres l et c légal
-        if flag_nbr_mem == True:
+        if flag_nbr_mem == True: #Verif de nombres l et c légal
             if 0 <= l_user <= len(liste_grille) and 0 <= c_user <= len(liste_grille[0]): #Si les valeurs existent
                 l_user = int(l_user)
                 c_user = int(c_user)
@@ -180,32 +178,33 @@ def user_inter(liste_grille): # Interaction user
 def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se jouer le GAMING (interaction userinput et grille)
     """
     Prends les valeurs l_user, c_user, action, grille que modifie le joueur, la grille scorée, et retourne la grille modifiée en circonstance, DeathBomb si une bombe est touchée,
-    FBomb si un f a été placé sur une bombe, n si une case intouchable est touchée
+    FBomb si un f a été placé sur une bombe, n si une case intouchable est touchée, FlagFlag tq. 0 = pas de drapeau posé, 1 = drapeau ajouté, 2 = drapeau retiré, 3 = drapeau retiré sur une bombe
     """
-    DeathBomb = False
-    FBomb = False
-    l_user = int(l_user)
+    DeathBomb = False #Si true -> Bombe touchée, Game Over
+    FBomb = False #Si true -> Case minée flaguée
+    l_user = int(l_user) #Simplifier ce cambouilli
     c_user = int(c_user)
-    grille = grilleJoueur.copy()
-    FlagDebug = False
-    n = False
+    grille = grilleJoueur.copy() #Juste moi qui panique, techniquement cette commande est redondante, mais j'ose pas l'enlever par peur de tout casser
+    FlagDebug = False #Si true -> Active Debug: Affiche la grille
+    n = False #Si true -> Erreur, ne fais rien a la grille et relance le joueur
+    FlagFlag = 0 #Si 1 -> drapeau posé, si 2 -> drapeau retiré, si 3 -> drapeau retiré alors qu'il est juste
     try:
-        if action == "m":
+        if action == "m": #Si action Marcher
 
             if grille[l_user][c_user] != "□" or grille[l_user][c_user] == "f" or grille[l_user][c_user] == "?": #Case innouvrable
                 n = True
 
-            elif grillescore[l_user][c_user] == "B": # Bombe
+            elif grillescore[l_user][c_user] == "B": #Marcher sur Bombe
                 grille[l_user][c_user] == "B"
                 DeathBomb = True
 
-            elif grillescore[l_user][c_user] == 0: # Zéro
+            elif grillescore[l_user][c_user] == 0: #Marcher sur Zéro
 
                 grille[l_user][c_user] = int(grillescore[l_user][c_user]) #Remplacer la case
                 if flag_turtle == True:
                     tr.nombrebombestortue(l_user,c_user,int(grillescore[l_user][c_user]))
 
-                #Maintenant, il faut montrer les 8 voisins
+                # - - - Maintenant, il faut montrer les 8 voisins - - -
 
                 if (l_user - 1) >= 0 and (c_user - 1) >= 0: #En haut à gauche
                     grille[l_user - 1][c_user - 1] = int(grillescore[l_user - 1][c_user - 1])
@@ -254,12 +253,13 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
         
         elif action == "f": #Drapeau
             
+            FlagFlag = 1 #Drapeau posé
             if grille[l_user][c_user] == "f": #Pour enlever le drapeau
-                #if grillescore[l_user][c_user] == "B": #Enlever le drapeau = décès. Ce jeu a pour but de ressembler à un simulateur réaliste de guerre.
-                #    DeathBomb = True
                 grille[l_user][c_user] = "□"
                 if flag_turtle == True:
                         tr.casenormaleturtle(l_user,c_user)
+                if grillescore[l_user][c_user] == "B": #Si drapeau retiré sur case minée
+                    FlagFlag = 3
             
             elif grillescore[l_user][c_user] == "B": #Si drapeau sur bombe
                 FBomb = True
@@ -267,59 +267,48 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
                 if flag_turtle == True:
                         tr.drapeautortue(l_user,c_user)
                 
-            else:
+            else: #Drapeau sur case vide
                 grille[l_user][c_user] = "f"
                 if flag_turtle == True:
                         tr.drapeautortue(l_user,c_user)
+                FlagFlag = 2
 
             
     
-        elif action == "?":
+        elif action == "?": #Interrogation
             if grille[l_user][c_user] == "?":
                 grille[l_user][c_user] = "□"
                 if flag_turtle == True:
-                        tr.casenormaleturtle(l_user,c_user)
-                        
+                        tr.casenormaleturtle(l_user,c_user)       
             else:
                 grille[l_user][c_user] = "?"
                 if flag_turtle == True:
                         tr.pointinterrogationtortue(l_user,c_user)
-
-        elif action == "DEBUG":
-            FlagDebug = True
-            if grillescore[l_user][c_user] == "B": #Si drapeau sur bombe
-                FBomb = True
-                grille[l_user][c_user] = "f"
-            else:
-                grille[l_user][c_user] = "f"
-
-            if grille[l_user][c_user] == "f": #Pour enlever le drapeau
-                #if grillescore[l_user][c_user] == "B": #Enlever le drapeau = décès. Ce jeu a pour but de ressembler à un simulateur réaliste de guerre.
-                #    DeathBomb = True
-                grille[l_user][c_user] = "□"
-
         
-        
-        elif action == "DEBUG":
+        elif action == "DEBUG": #Debug
             FlagDebug = True
     except IndexError:
         print("Erreur: Case en dehors de la grille.")
 
-    return grille, DeathBomb, FBomb, FlagDebug, n
+    return grille, DeathBomb, FBomb, FlagDebug, n, FlagFlag
 
 def DebutGame():
     """
     Fait débuter la partie. Demande au user le nbr de lignes, colonnes et bombes, et retourne les valeurs lignes, colonnes et bombes
     """
+
+    # - - - Présentation - - -
     print("     ,--.!,\n  __/   -*-\n,d08b.  '|`\n0088MM\n`9MMP'   Démineur - Ardi et Cédric")
     print("Bienvenue dans le futur du Gaming et du divertissement, vous allez adorer ! Je ne vais pas vous faire l'affront de vous expliquer comment jouer.")
 
-    flag_a = False
-    flag_b = False
-    flag_c = False
-    flag_d = False
-    flag_turtle = False
+    # - - - Les Flags - - -
+    flag_a = False #Flag Bombes
+    flag_b = False #Flag Colonnes
+    flag_c = False #Flag lignes
+    flag_d = False #Flag Input Turtle o/n
+    flag_turtle = False #Flag Turtle
 
+    # - - - Flag Turtle - - -
     while flag_d == False:
         try: #turtle ou pas
             d = input("Voulez-vous jouer avec les graphisems turtle ? (oui ou non): ")
@@ -334,6 +323,7 @@ def DebutGame():
         except ValueError:
             print('La réponse doit être "oui" ou "non".')
     
+    # - - - Flag Lignes - - -
     while flag_a == False:
         try: #Lignes
             a = input("Combien de lignes voulez-vous ? (Facile: 5, Moyen: 10, Difficile: 15): ")
@@ -347,6 +337,7 @@ def DebutGame():
         except ValueError:
             print("Erreur: Le nombre de ligne doit être entre 5 et 70")
         
+    # - - - Flag Colonnes - - -
     while flag_b == False:
         try: #Colonnes
             b = input("Combien de colonnes voulez-vous ? (Facile: 5, Moyen: 10, Difficile: 15): ")
@@ -360,6 +351,7 @@ def DebutGame():
         except ValueError:
             print("Erreur: Le nombre de colonnes doit être entre 5 et 70.")
         
+    # - - - Flag Bombes - - -
     while flag_c == False:
         try:
             c = input("Combien de bombes voulez-vous ? (Facile: 5, Moyen: 20, Difficile: 50): ")
@@ -384,10 +376,13 @@ while flag_jeu == False: #permet de rejouer
     nLignes, nColonnes, nBomb = int(nLignes), int(nColonnes), int(nBomb)
     GrilleNbr = GrilleScore(putBomb(magrille(nLignes, nColonnes), nBomb)) #Génération de la grille avc toutes les infos
 
-    GrilleJoueur = grille_cachee(GrilleNbr)
+    GrilleJoueur = grille_cachee(GrilleNbr) #Création de la grille du joueur
 
-    flag_compteur_juste = 0
-    TouchBomb = False
+    flag_compteur_juste = 0 #Compteur de drapeaux justes
+    TouchBomb = False #Boolean si une bombe est touchée
+    FlagFlag = 0 #Pointeur (? pas sûr du terme) pour savoir si un drapeau a été mis ou retiré
+    FlagCounter = 0 #Compteur de drapeaux
+    FlagDrapeau = False #Flag pour les drapeaux
 
     printGrille(GrilleJoueur)
 
@@ -395,17 +390,37 @@ while flag_jeu == False: #permet de rejouer
         import turtlelib as tr
         tr.grilleturtle(nLignes,nColonnes)
 
-    while flag_compteur_juste < nBomb and TouchBomb == False: # Le JEU
+    while not flag_compteur_juste == FlagCounter == nBomb and TouchBomb == False: # Le JEU
+        # - - - Interaction User - - -
         l_user, c_user, action_user = user_inter(GrilleNbr)
-        grilleJoueur, TouchBomb, FlagBomb, FlagDebug, FlagNon = gameplay(l_user, c_user, action_user, GrilleJoueur, GrilleNbr)
-        if FlagDebug == True:
+        # - - - Fonction Gameplay - - -
+        grilleJoueur, TouchBomb, FlagBomb, FlagDebug, FlagNon, FlagFlag = gameplay(l_user, c_user, action_user, GrilleJoueur, GrilleNbr)
+        # - - - Comparaison des variables - - -
+        if FlagDebug == True: #Active le Debug
             printGrille(GrilleNbr)
-        if FlagBomb == True:
+        # - - -
+        if FlagBomb == True: #Compteur de drapeau bien mis
             flag_compteur_juste += 1
-        if FlagNon == True:
+        # - - -
+        if FlagNon == True: #Case impossible à modifier
             print("Case intouchable !")
+        # - - -  
         printGrille(GrilleJoueur)
-        if TouchBomb == True:
+        # - - -
+        if FlagFlag > 0: #Compteur de drapeau | Éviter de pouvoir gagner en mettant des drapeaux sur des cases vides
+            if FlagFlag == 1: #Drapeau posé
+                FlagCounter += 1
+                if FlagBomb == True: #Drapeau posé sur bombe
+                    flag_compteur_juste += 1
+            elif FlagFlag == 2: #Drapeau retirée
+                FlagCounter = FlagCounter - 1
+            elif FlagFlag == 3: #Drapeau retirée d'une bombe
+                flag_compteur_juste = flag_compteur_juste - 1
+                FlagCounter = FlagCounter - 1
+        # - - -
+        print("Il reste {0} bombe(s).".format(nBomb - FlagCounter))
+        # - - -
+        if TouchBomb == True: #Écran de game over
             print("     ,--.!,\n  __/   -*-\n,d08b.  '|`\n0088MM\n`9MMP'   Game Over. C'était une bombe.")
             print("Voici la grille complète:")
             printGrille(GrilleNbr)
@@ -416,10 +431,10 @@ while flag_jeu == False: #permet de rejouer
                             tr.bombeturtle(i,k)
                         else:
                             tr.nombrebombestortue(i,k,GrilleNbr[i][k])
-                        
-            
             print("Rééssayez !")
-        if flag_compteur_juste == nBomb:
+        # - - -
+
+        if flag_compteur_juste == nBomb: #Victoire
             printGrille(GrilleNbr)
             if flag_turtle == True:
                 for i in range(len(GrilleNbr)):
@@ -431,6 +446,7 @@ while flag_jeu == False: #permet de rejouer
                         
             print("___________/|\n (__|||__) \| Bravo ! Vous avez gagné ! \n Merci d'avoir joué !")
 
+    # - - - Replay - - -
     replay = False
     while replay == False:
         rejouer=input('Pour rejouer, entrez "r". Pour quitter le programme, entrez "q".')
