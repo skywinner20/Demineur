@@ -7,7 +7,7 @@
 Le meilleur démineur en python, dévelopé avec amour par Ardi Cerkini et Cédric Brunner. Il a été développé comme projet scolaire, afin d'apprendre le langage Python.
 
 -- Comment jouer ?
-Téléchargez les fichiers turtlelib.py et demineur.py, et mettez dans le même dossier.
+Téléchargez les fichiers turtlelib.py et demineur.py, et mettez-les dans le même dossier.
 
 Lancez le fichier demineur.py.
 
