@@ -211,56 +211,56 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
                     if flag_turtle == True:
                         tr.nombrebombestortue(l_user - 1,c_user - 1,int(grillescore[l_user - 1][c_user - 1]))
                     if grillescore[l_user - 1][c_user - 1] == 0:
-                        grilleJoueur, a, b, c, d, e = gameplay(l_user - 1, c_user - 1, "m", grilleJoueur, grillescore) #0 en cascades
+                        gameplay(l_user - 1, c_user - 1, "m", grilleJoueur, grillescore) #0 en cascades
 
                 if (l_user - 1) >= 0: #En haut au milieu
                     grilleJoueur[l_user - 1][c_user] = int(grillescore[l_user - 1][c_user])
                     if flag_turtle == True:
                         tr.nombrebombestortue(l_user - 1,c_user,int(grillescore[l_user - 1][c_user]))
                     if grillescore[l_user - 1][c_user] == 0:
-                        grilleJoueur, a, b, c, d, e = gameplay(l_user - 1, c_user, "m", grilleJoueur, grillescore) #0 en cascades
+                        gameplay(l_user - 1, c_user, "m", grilleJoueur, grillescore) #0 en cascades
 
                 if (l_user - 1) >= 0 and (c_user + 1) < len(grilleJoueur[0]): #En haut à droite
                     grilleJoueur[l_user - 1][c_user + 1] = int(grillescore[l_user - 1][c_user + 1])
                     if flag_turtle == True:
                         tr.nombrebombestortue(l_user - 1,c_user + 1,int(grillescore[l_user - 1][c_user + 1]))
                     if grillescore[l_user - 1][c_user + 1] == 0:
-                        grilleJoueur, a, b, c, d, e = gameplay(l_user - 1, c_user + 1, "m", grilleJoueur, grillescore) #0 en cascades
+                        gameplay(l_user - 1, c_user + 1, "m", grilleJoueur, grillescore) #0 en cascades
 
                 if (c_user - 1) >= 0: #Au milieu à gauche
                     grilleJoueur[l_user][c_user - 1] = int(grillescore[l_user][c_user - 1])
                     if flag_turtle == True:
                         tr.nombrebombestortue(l_user,c_user - 1,int(grillescore[l_user][c_user - 1]))
                     if grillescore[l_user][c_user - 1] == 0:
-                        grilleJoueur, a, b, c, d, e = gameplay(l_user, c_user - 1, "m", grilleJoueur, grillescore) #0 en cascades
+                        gameplay(l_user, c_user - 1, "m", grilleJoueur, grillescore) #0 en cascades
                 
                 if (c_user + 1) < len(grilleJoueur[0]): #Au milieu à droite
                     grilleJoueur[l_user][c_user + 1] = int(grillescore[l_user][c_user + 1])
                     if flag_turtle == True:
                         tr.nombrebombestortue(l_user,c_user + 1,int(grillescore[l_user][c_user + 1]))
                     if grillescore[l_user - 1][c_user - 1] == 0:
-                        grilleJoueur, a, b, c, d, e = gameplay(l_user, c_user + 1, "m", grilleJoueur, grillescore) #0 en cascades
+                        gameplay(l_user, c_user + 1, "m", grilleJoueur, grillescore) #0 en cascades
                 
                 if (l_user + 1) < len(grilleJoueur) and 0 <= (c_user - 1) < len(grilleJoueur[0]): #En bas à gauche
                     grilleJoueur[l_user + 1][c_user - 1] = int(grillescore[l_user + 1][c_user - 1])
                     if flag_turtle == True:
                         tr.nombrebombestortue(l_user + 1,c_user - 1,int(grillescore[l_user + 1][c_user - 1]))
                     if grillescore[l_user + 1][c_user - 1] == 0:
-                        grilleJoueur, a, b, c, d, e = gameplay(l_user + 1, c_user - 1, "m", grilleJoueur, grillescore) #0 en cascades
+                        gameplay(l_user + 1, c_user - 1, "m", grilleJoueur, grillescore) #0 en cascades
                 
                 if (l_user + 1) < len(grilleJoueur): #En bas au milieu
                     grilleJoueur[l_user + 1][c_user] = int(grillescore[l_user + 1][c_user])
                     if flag_turtle == True:
                         tr.nombrebombestortue(l_user + 1,c_user,int(grillescore[l_user + 1][c_user]))
                     if grillescore[l_user + 1][c_user] == 0:
-                        grilleJoueur, a, b, c, d, e = gameplay(l_user + 1, c_user, "m", grilleJoueur, grillescore) #0 en cascades
+                        gameplay(l_user + 1, c_user, "m", grilleJoueur, grillescore) #0 en cascades
                 
                 if (l_user + 1) < len(grilleJoueur) and (c_user + 1) < len(grilleJoueur[0]): #En bas à droite
                     grilleJoueur[l_user + 1][c_user + 1] = int(grillescore[l_user + 1][c_user + 1])
                     if flag_turtle == True:
                         tr.nombrebombestortue(l_user + 1,c_user + 1,int(grillescore[l_user + 1][c_user + 1]))
                     if grillescore[l_user + 1][c_user + 1] == 0:
-                        grilleJoueur, a, b, c, d, e = gameplay(l_user + 1, c_user + 1, "m", grilleJoueur, grillescore) #0 en cascades
+                        gameplay(l_user + 1, c_user + 1, "m", grilleJoueur, grillescore) #0 en cascades
             
             else: #le reste 
                 grilleJoueur[l_user][c_user] = int(grillescore[l_user][c_user])
