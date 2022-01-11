@@ -406,7 +406,7 @@ while flag_jeu == False: #permet de rejouer
 
     if flag_turtle == True:
         import turtlelib as tr
-        tr.grilleturtle(nLignes,nColonnes)
+        tr.grilleturtle(nColonnes,nLignes)
 
     while not flag_compteur_juste == FlagCounter == nBomb and TouchBomb == False: # Le JEU
         #--- verification compteur pour debug----
