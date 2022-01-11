@@ -1,6 +1,23 @@
-# Demineur
+# Démineur - Projet OC Informatique
+Gymnase de Chamblandes - 2022
+
 Le meilleur démineur en python, dévelopé avec amour par Ardi Cerkini et Cédric Brunner. Il a été développé comme projet scolaire, afin d'apprendre le langage Python.
 
+## Auteurs
+
+Ardi Cerkini & Cédric Brunner
+
+## Fichiers
+
+La liste des fichiers faisant partie du projet
+
+ * README.md
+ * LICENSE
+ * demineur.py
+ * turtlelib.py
+ * journal_de_bord.ipynb
+ * lisez-moi.tkt
+ 
 ## Comment jouer ?
 Téléchargez les fichiers turtlelib.py et demineur.py, et mettez-les dans le même dossier.
 
