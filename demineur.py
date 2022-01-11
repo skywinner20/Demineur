@@ -410,10 +410,10 @@ while flag_jeu == False: #permet de rejouer
 
     while not flag_compteur_juste == FlagCounter == nBomb and TouchBomb == False: # Le JEU
         #--- verification compteur pour debug----
-        print(nBomb, "nBomb")
-        print(FlagCounter, "flagcounter")
-        print(FlagFlag, "flagflag")
-        print(flag_compteur_juste,"flag_compteur_juste")
+        #print(nBomb, "nBomb")
+        #print(FlagCounter, "flagcounter")
+        #print(FlagFlag, "flagflag")
+        #print(flag_compteur_juste,"flag_compteur_juste")
         # - - - Interaction User - - -
         l_user, c_user, action_user = user_inter(GrilleNbr)
         # - - - Fonction Gameplay - - -
@@ -421,9 +421,6 @@ while flag_jeu == False: #permet de rejouer
         # - - - Comparaison des variables - - -
         if FlagDebug == True: #Active le Debug
             printGrille(GrilleNbr)
-        # - - -
-        if FlagBomb == True: #Compteur de drapeau bien mis
-            flag_compteur_juste += 1
         # - - -
         if FlagNon == True: #Case impossible à modifier
             print("Case intouchable !")
