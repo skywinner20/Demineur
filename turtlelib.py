@@ -147,3 +147,41 @@ def bombeturtle(y,x):
     ATuin.circle(2)
     ATuin.end_fill()
     ATuin.right(160)
+    
+def bombeturtleflagee(y,x):
+    """
+    Prend des coordonnées et un nombre en paramètre et dessine une bombe barrée, refait la case avant pour être sûr qu'elle ne comporte pas déja un signe
+    """
+    ATuin.fillcolor("white")
+    ATuin.up() #évite de dessinner les déplacements
+    ATuin.goto(50*x,-50*y) #fait aller la tortue à la position de la case
+    ATuin.down() #commence à dessiner
+    ATuin.begin_fill() #commence le remplissage des cases
+    for z in range(4): # boucle qui dessine un carré
+        ATuin.forward(40)
+        ATuin.right(90)
+    ATuin.end_fill() #termine le remplissage des cases
+    ATuin.fillcolor("black") #dessine une bombe
+    ATuin.up()
+    ATuin.goto(50*x+20,-50*y-35) #desssine une bombe
+    ATuin.down()
+    ATuin.fillcolor("black")
+    ATuin.begin_fill()
+    ATuin.circle(10)
+    ATuin.end_fill()
+    ATuin.circle(10,160)
+    ATuin.left(90)
+    ATuin.circle(6,-180)
+    ATuin.fillcolor("yellow")
+    ATuin.left(90)
+    ATuin.begin_fill()
+    ATuin.circle(2)
+    ATuin.end_fill()
+    ATuin.right(160)
+    ATuin.goto(50*x,-50*y-40)
+    ATuin.color("red")
+    ATuin.down()
+    ATuin.goto(50*x+40,-50*y)
+    ATuin.up()
+    ATuin.color("black")
+    

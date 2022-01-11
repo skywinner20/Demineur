@@ -285,14 +285,14 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
                 grilleJoueur[l_user][c_user] = "□"
                 if flag_turtle == True:
                         tr.casenormaleturtle(l_user,c_user)
-                if grillescore[l_user][c_user] == "\U+0243": #Si drapeau retiré sur case minée
+                if grillescore[l_user][c_user] == "b": #Si drapeau retiré sur case minée
                     FlagFlag = 3
                     grillescore[l_user][c_user] = "B"
             
             elif grillescore[l_user][c_user] == "B": #Si drapeau sur bombe
                 FBomb = True
                 grilleJoueur[l_user][c_user] = "f"
-                grillescore[l_user][c_user] = "\U+0243"
+                grillescore[l_user][c_user] = "b"
                 if flag_turtle == True:
                         tr.drapeautortue(l_user,c_user)
                 
@@ -458,6 +458,8 @@ while flag_jeu == False: #permet de rejouer
                     for k in range(len(GrilleNbr[i])):
                         if GrilleNbr[i][k] == "B":
                             tr.bombeturtle(i,k)
+                        elif GrilleNbr[i][k] == "b":
+                            tr.bombeturtleflagee
                         else:
                             tr.nombrebombestortue(i,k,GrilleNbr[i][k])
             print("Rééssayez !")
@@ -470,6 +472,8 @@ while flag_jeu == False: #permet de rejouer
                     for k in range(len(GrilleNbr[i])):
                         if GrilleNbr[i][k] == "B":
                             tr.bombeturtle(i,k)
+                        elif GrilleNbr[i][k] == "b":
+                            tr.bombeturtleflagee
                         else:
                             tr.nombrebombestortue(i,k,GrilleNbr[i][k])
                         
