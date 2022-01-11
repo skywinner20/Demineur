@@ -452,12 +452,11 @@ while flag_jeu == False: #permet de rejouer
                         if GrilleNbr[i][k] == "B":
                             tr.bombeturtle(i,k)
                         elif GrilleNbr[i][k] == "b":
-                            tr.bombeturtleflagee
+                            pass
                         else:
                             tr.nombrebombestortue(i,k,GrilleNbr[i][k])
             print("Rééssayez !")
         # - - -
-
         if flag_compteur_juste == nBomb: #Victoire
             printGrille(GrilleNbr)
             if flag_turtle == True:
@@ -466,7 +465,7 @@ while flag_jeu == False: #permet de rejouer
                         if GrilleNbr[i][k] == "B":
                             tr.bombeturtle(i,k)
                         elif GrilleNbr[i][k] == "b":
-                            tr.bombeturtleflagee
+                            pass
                         else:
                             tr.nombrebombestortue(i,k,GrilleNbr[i][k])
                         
