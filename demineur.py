@@ -461,10 +461,7 @@ while flag_jeu == False: #permet de rejouer
                             tr.nombrebombestortue(i,k,GrilleNbr[i][k])
                         
             print("___________/|\n (__|||__) \| Bravo ! Vous avez gagné ! \n Merci d'avoir joué !")
-    # - - -
-    if flag_turtle == True:
-        discworld.reset()
-        turtle.reset()
+    
 
     # - - - Replay - - -
     replay = False
@@ -475,4 +472,7 @@ while flag_jeu == False: #permet de rejouer
         if rejouer == "q":
             replay = True
             flag_jeu = True
-    
+    # - - -
+    if flag_turtle == True:
+        discworld.reset()
+        turtle.reset()
