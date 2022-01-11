@@ -27,7 +27,7 @@ Voici les mouvements possibles:
 >**F, Drapeau:**
 >Permet de signaler une case comme étant minée. Pour enlever un drapeau, refaites l'action "Drapeau" sur la case déjà signalée.
 
->**?, Interrogation**
+>**?, Interrogation:**
 >Si vous n'êtes pas sûr s'il s'agit d'une bombe ou pas. Pour enlever l'interrogation, refaites l'action "?" sur la case signalée.
 
 
