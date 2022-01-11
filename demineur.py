@@ -464,7 +464,6 @@ while flag_jeu == False: #permet de rejouer
     # - - -
     if flag_turtle == True:
         tr.discworld.reset()
-        tr.turtle.reset()
 
     # - - - Replay - - -
     replay = False
