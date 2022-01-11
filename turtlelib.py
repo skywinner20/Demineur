@@ -186,3 +186,39 @@ def bombeturtleflagee(y,x):
     ATuin.up()
     ATuin.color("black")
     
+def compteurbombeturtle(x):
+    ATuin.up()
+    ATuin.goto(-50,50) #desssine une bombe
+    ATuin.down()
+    ATuin.fillcolor("black")
+    ATuin.begin_fill()
+    ATuin.circle(10)
+    ATuin.end_fill()
+    ATuin.circle(10,160)
+    ATuin.left(90)
+    ATuin.circle(6,-180)
+    ATuin.fillcolor("yellow")
+    ATuin.left(90)
+    ATuin.begin_fill()
+    ATuin.circle(2)
+    ATuin.end_fill()
+    ATuin.right(160)
+    
+    ATuin.fillcolor("white")
+    ATuin.up() #évite de dessinner les déplacements
+    ATuin.goto(0,100) #fait aller la tortue à la position de la case
+    ATuin.down() #commence à dessiner
+    ATuin.begin_fill() #commence le remplissage des cases
+    for z in range(4): # boucle qui dessine un carré
+        ATuin.forward(40)
+        ATuin.right(90)
+    ATuin.end_fill() #termine le remplissage des cases
+    
+    ATuin.pencolor("blue")
+    ATuin.up()
+    ATuin.goto(0,90)
+    ATuin.down()
+    ATuin.write(str(x), font=("Arial", 30, "normal"))
+    ATuin.pencolor("black")
+    
+    

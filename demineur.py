@@ -439,6 +439,8 @@ while flag_jeu == False: #permet de rejouer
                 FlagCounter = FlagCounter - 1
         # - - -
         print("Il reste {0} bombe(s).".format(nBomb - FlagCounter))
+        if flag_turtle == True:
+            tr.compteurbombeturtle(nBomb-FlagCounter)
         # - - -
         if TouchBomb == True: #Écran de game over
             print("     ,--.!,\n  __/   -*-\n,d08b.  '|`\n0088MM\n`9MMP'   Game Over. C'était une bombe.")
