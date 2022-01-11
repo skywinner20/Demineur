@@ -4,6 +4,7 @@ discworld.reset()
 turtle.reset()
 ATuin = turtle.Turtle()
 ATuin.speed(0)
+turtle.delay(0)
 ATuin.shape("turtle")
 
 ATuin.fillcolor("gray")
