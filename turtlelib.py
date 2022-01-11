@@ -187,6 +187,9 @@ def bombeturtleflagee(y,x):
     ATuin.color("black")
     
 def compteurbombeturtle(x):
+    """
+    Prend un nombre en paramètre et affiche le nombre de bombe restante
+    """
     ATuin.up()
     ATuin.goto(-30,65) #desssine une bombe
     ATuin.down()
