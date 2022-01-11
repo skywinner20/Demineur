@@ -184,7 +184,7 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
     FBomb = False #Si true -> Case minée flaguée
     l_user = int(l_user) #Simplifier ce cambouilli
     c_user = int(c_user)
-    grilleJoueur = grilleJoueur.copy() #Juste moi qui panique, techniquement cette commande est redondante, mais j'ose pas l'enlever par peur de tout casser
+    grilleJoueur = grilleJoueur.copy() #Juste moi qui panique. Techniquement, cette commande est redondante, mais j'ose pas l'enlever par peur de tout casser
     FlagDebug = False #Si true -> Active Debug: Affiche la grille
     n = False #Si true -> Erreur, ne fais rien a la grille et relance le joueur
     FlagFlag = 0 #Si 1 -> drapeau posé, si 2 -> drapeau retiré, si 3 -> drapeau retiré alors qu'il est juste
@@ -262,8 +262,6 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
                     if flag_turtle == True:
                         tr.nombrebombestortue(l_user + 1,c_user + 1,int(grillescore[l_user + 1][c_user + 1]))
 
-
-            
             else: #le reste 
                 grilleJoueur[l_user][c_user] = int(grillescore[l_user][c_user])
                 if flag_turtle == True:
@@ -295,8 +293,6 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
                 if flag_turtle == True:
                         tr.drapeautortue(l_user,c_user)
 
-            
-    
         elif action == "?": #Interrogation
             if grilleJoueur[l_user][c_user] == "?":
                 grilleJoueur[l_user][c_user] = "□"
