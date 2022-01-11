@@ -420,6 +420,11 @@ while flag_jeu == False: #permet de rejouer
         tr.grilleturtle(nLignes,nColonnes)
 
     while not flag_compteur_juste == FlagCounter == nBomb and TouchBomb == False: # Le JEU
+        #--- verification compteur pour debug----
+        print(nBomb, "nBomb")
+        print(FlagCounter, "flagcounter")
+        print(FlagFlag, "flagflag")
+        print(flag_compteur_juste,"flag_compteur_juste")
         # - - - Interaction User - - -
         l_user, c_user, action_user = user_inter(GrilleNbr)
         # - - - Fonction Gameplay - - -
@@ -465,7 +470,7 @@ while flag_jeu == False: #permet de rejouer
             print("Rééssayez !")
         # - - -
 
-        if flag_compteur_juste == nBomb: #Victoire
+        if flag_compteur_juste == FlagCounter == nBomb: #Victoire
             printGrille(GrilleNbr)
             if flag_turtle == True:
                 for i in range(len(GrilleNbr)):
