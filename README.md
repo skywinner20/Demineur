@@ -1,5 +1,5 @@
 # Demineur
-Le meilleur démineur en python, dévelopé avec amour par Ardi Cerkini et Cédric Brunner.
+Le meilleur démineur en python, dévelopé avec amour par Ardi Cerkini et Cédric Brunner. Il a été développé comme projet scolaire, afin d'apprendre le langage Python.
 
 ## Comment jouer ?
 Téléchargez les fichiers turtlelib.py et demineur.py, et mettez dans le même dossier.
@@ -34,5 +34,5 @@ Voici les mouvements possibles:
 Le jeu se termine lorsque toutes les mines sont marquées, ou lorsque vous marchez sur une bombe. Bonne chance !
 
 ## Exigences techniques
-Vous avez besoin du package Turtle, ainsi que d'un ordinateur.
+Vous avez besoin de Python 3, du package Turtle, ainsi que d'un ordinateur.
 

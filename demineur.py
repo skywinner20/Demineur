@@ -208,7 +208,7 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
 
                 if (l_user - 1) >= 0 and (c_user - 1) >= 0: #En haut à gauche
                     if grillescore[l_user - 1][c_user - 1] == 0 and grilleJoueur[l_user - 1][c_user - 1] == "□":
-                        grilleJoueur, a, b, c, d, e, f = gameplay(l_user - 1, c_user - 1, "m", grilleJoueur, grillescore) #0 en cascades | POURQUOI LA RECURSION MARCHE PAAAAAAAS | mtn ca marche???
+                        grilleJoueur, a, b, c, d, e, f = gameplay(l_user - 1, c_user - 1, "m", grilleJoueur, grillescore) #0 en cascades | POURQUOI LA RECURSION MARCHE PAAAAAAAS | mtn ca marche??? | Ok ca marche.
                     grilleJoueur[l_user - 1][c_user - 1] = int(grillescore[l_user - 1][c_user - 1])
                     if flag_turtle == True:
                         tr.nombrebombestortue(l_user - 1,c_user - 1,int(grillescore[l_user - 1][c_user - 1]))
