@@ -463,8 +463,8 @@ while flag_jeu == False: #permet de rejouer
             print("___________/|\n (__|||__) \| Bravo ! Vous avez gagné ! \n Merci d'avoir joué !")
     # - - -
     if flag_turtle == True:
-        discworld.reset()
-        turtle.reset()
+        tr.discworld.reset()
+        tr.turtle.reset()
 
     # - - - Replay - - -
     replay = False
