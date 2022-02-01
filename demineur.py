@@ -2,7 +2,7 @@
 #   __/   -*-
 # ,d08b.  '|`
 # 0088MM
-# `9MMP'  --- Ardi et Cédric, Démineur ---
+# `9MMP'  --- Ardi et Cedric, Demineur ---
 # Bienvenue dans le futur jeu vidéo du siècle, litéralement le GOTY 2022, on a déjà été contacté par EA, Sony, Microsoft et Microids Studios
 
 import random #Les imports
@@ -212,6 +212,8 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
                         grilleJoueur[l_user - 1][c_user - 1] = int(grillescore[l_user - 1][c_user - 1])
                     elif grilleJoueur[l_user - 1][c_user - 1] == "f":
                         pass
+                    else:
+                        grilleJoueur[l_user - 1][c_user - 1] = int(grillescore[l_user - 1][c_user - 1])
                     if flag_turtle == True:
                         tr.nombrebombestortue(l_user - 1,c_user - 1,int(grillescore[l_user - 1][c_user - 1]))
 
@@ -221,6 +223,8 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
                         grilleJoueur[l_user - 1][c_user] = int(grillescore[l_user - 1][c_user])
                     elif grilleJoueur[l_user - 1][c_user] == "f":
                         pass
+                    else:
+                        grilleJoueur[l_user - 1][c_user] = int(grillescore[l_user - 1][c_user])
                     if flag_turtle == True:
                         tr.nombrebombestortue(l_user - 1,c_user,int(grillescore[l_user - 1][c_user]))
 
@@ -230,6 +234,8 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
                         grilleJoueur[l_user - 1][c_user + 1] = int(grillescore[l_user - 1][c_user + 1])
                     elif grilleJoueur[l_user - 1][c_user + 1] == "f":
                         pass
+                    else:
+                        grilleJoueur[l_user - 1][c_user + 1] = int(grillescore[l_user - 1][c_user + 1])
                     if flag_turtle == True:
                         tr.nombrebombestortue(l_user - 1,c_user + 1,int(grillescore[l_user - 1][c_user + 1]))
 
@@ -239,6 +245,8 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
                         grilleJoueur[l_user][c_user - 1] = int(grillescore[l_user][c_user - 1])
                     elif grilleJoueur[l_user][c_user - 1] == "f":
                         pass
+                    else:
+                        grilleJoueur[l_user][c_user - 1] = int(grillescore[l_user][c_user - 1])
                     if flag_turtle == True:
                         tr.nombrebombestortue(l_user,c_user - 1,int(grillescore[l_user][c_user - 1]))
                 
@@ -248,6 +256,8 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
                         grilleJoueur[l_user][c_user + 1] = int(grillescore[l_user][c_user + 1])
                     elif grilleJoueur[l_user][c_user + 1] == "f":
                         pass
+                    else:
+                        grilleJoueur[l_user][c_user + 1] = int(grillescore[l_user][c_user + 1])
                     if flag_turtle == True:
                         tr.nombrebombestortue(l_user,c_user + 1,int(grillescore[l_user][c_user + 1]))
 
@@ -257,6 +267,8 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
                         grilleJoueur[l_user + 1][c_user - 1] = int(grillescore[l_user + 1][c_user - 1])
                     elif grilleJoueur[l_user + 1][c_user - 1] == "f":
                         pass
+                    else:
+                        grilleJoueur[l_user + 1][c_user - 1] = int(grillescore[l_user + 1][c_user - 1])
                     if flag_turtle == True:
                         tr.nombrebombestortue(l_user + 1,c_user - 1,int(grillescore[l_user + 1][c_user - 1]))
                 
@@ -266,6 +278,8 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
                         grilleJoueur[l_user + 1][c_user] = int(grillescore[l_user + 1][c_user])
                     elif grilleJoueur[l_user + 1][c_user] == "f":
                         pass
+                    else:
+                        grilleJoueur[l_user + 1][c_user] = int(grillescore[l_user + 1][c_user])
                     if flag_turtle == True:
                         tr.nombrebombestortue(l_user + 1,c_user,int(grillescore[l_user + 1][c_user]))
                 
@@ -275,6 +289,8 @@ def gameplay(l_user, c_user, action, grilleJoueur, grillescore): #Là ou va se j
                         grilleJoueur[l_user + 1][c_user + 1] = int(grillescore[l_user + 1][c_user + 1])
                     elif grilleJoueur[l_user + 1][c_user + 1] == "f":
                         pass
+                    else:
+                        grilleJoueur[l_user + 1][c_user + 1] = int(grillescore[l_user + 1][c_user + 1])
                     if flag_turtle == True:
                         tr.nombrebombestortue(l_user + 1,c_user + 1,int(grillescore[l_user + 1][c_user + 1]))
 
